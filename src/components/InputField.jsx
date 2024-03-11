@@ -6,7 +6,10 @@ import { IconButton } from "@mui/material";
 
 const InputField = () => {
   const initState = {
-    specJsx: [1],
+    specJsx: [0],
+    title: "",
+    specs: [],
+    price: "",
   };
 
   const [state, setState] = useState(initState);
@@ -20,6 +23,15 @@ const InputField = () => {
       console.log(num);
       let removeSpecJsx = state.specJsx.filter((el) => el !== num);
       state.specJsx = removeSpecJsx;
+    },
+    titleChange: (value) => {
+      state.title = value;
+    },
+    priceChange: (value) => {
+      state.price = value;
+    },
+    specsChange: (num, value) => {
+      state.specs[num] = value;
     },
   });
 
@@ -49,16 +61,24 @@ const Title = ({ state, handle }) => {
       id="outlined-basic"
       label="Title"
       variant="outlined"
+      value={state.title}
+      onChange={(e) => handle.titleChange(e.target.value)}
     />
   );
 };
 
 const Specs = ({ state, handle, num }) => {
   const lastNum = state.specJsx[state.specJsx.length - 1];
-
+  console.log(state.specs);
   return (
     <div className="spec-field">
-      <TextField id="outlined-basic" label={`Spec ${num}`} variant="outlined" />
+      <TextField
+        id="outlined-basic"
+        label={`Spec ${num}`}
+        variant="outlined"
+        value={state.specs[num]}
+        onChange={(e) => handle.specsChange(num, e.target.value)}
+      />
       {lastNum === num ? (
         <IconButton onClick={() => handle.addSpecField()}>
           <AddCircleIcon />
@@ -79,6 +99,8 @@ const Price = ({ state, handle }) => {
       id="outlined-basic"
       label="Price"
       variant="outlined"
+      value={state.price}
+      onChange={(e) => handle.priceChange(e.target.value)}
     />
   );
 };
