@@ -1,21 +1,47 @@
 .home-page-container {
-    display: flex;
+  display: flex;
 }
 
 .navbar-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .desktop-navbar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.hover-effect:hover {
-    /* Add your hover effect styles here */
-    background-color: lightgray; /* For example, change background color on hover */
+.home-page-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.input-field-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-field-title {
+  align-self: flex-start;
+}
+
+.input-specs-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.spec-field {
+  display: flex;
+  margin-top: 10px;
+  align-self: flex-start;
 }
