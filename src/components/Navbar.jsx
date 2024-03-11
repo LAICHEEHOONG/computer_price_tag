@@ -125,9 +125,9 @@ function Navbar(props) {
             </nav>
             <Box component="main" sx={{ p: 3 }}>
                 <Toolbar />
-                <Typography>
+                {/* <Typography>
                     Children
-                </Typography>
+                </Typography> */}
             </Box>
         </Box>
     );

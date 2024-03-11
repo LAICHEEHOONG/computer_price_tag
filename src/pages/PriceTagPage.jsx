@@ -1,13 +1,9 @@
-
-import Navbar from "../components/Navbar";
-
 const PriceTagPage = () => {
-
-    return (
-        <div className="home-page-container">
-   
-        </div>
-    )
-}
+  return (
+    <div className="home-page-container">
+      <h1>Price tag</h1>
+    </div>
+  );
+};
 
 export default PriceTagPage;
