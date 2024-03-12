@@ -6,7 +6,8 @@ import { IconButton } from "@mui/material";
 
 const InputField = () => {
   const initState = {
-    specJsx: [0],
+    specJsx: [{ id: 0, value: "" }],
+    specLastIndex: 0,
     title: "",
     specs: [],
     price: "",
@@ -15,14 +16,18 @@ const InputField = () => {
   const [state, setState] = useState(initState);
 
   const handle = setStateHandler(setState, state, {
-    addSpecField: () => {
-      let num = state.specJsx[state.specJsx.length - 1] + 1;
-      state.specJsx = [...state.specJsx, num];
+    updateLastIndex: () => {
+      state.specLastIndex = state.specJsx.length - 1;
     },
-    removeSpecField: (num) => {
-      console.log(num);
-      let removeSpecJsx = state.specJsx.filter((el) => el !== num);
+    addSpecField: () => {
+      let newId = state.specJsx[state.specJsx.length - 1].id + 1;
+      state.specJsx = [...state.specJsx, { id: newId, value: "" }];
+      handle.updateLastIndex();
+    },
+    removeSpecField: (_id) => {
+      let removeSpecJsx = state.specJsx.filter((obj) => obj.id !== _id);
       state.specJsx = removeSpecJsx;
+      handle.updateLastIndex();
     },
     titleChange: (value) => {
       state.title = value;
@@ -30,8 +35,8 @@ const InputField = () => {
     priceChange: (value) => {
       state.price = value;
     },
-    specsChange: (num, value) => {
-      state.specs[num] = value;
+    specsChange: (_id, _value) => {
+      state.specs[_id].value = _value;
     },
   });
 
@@ -41,8 +46,8 @@ const InputField = () => {
     <div className="input-field-container">
       <Title {...props} />
       <div className="input-specs-container">
-        {state.specJsx.map((num) => {
-          return <Specs key={num} {...props} num={num} />;
+        {state.specJsx.map((_id) => {
+          return <Specs key={_id} {...props} i={_id} />;
         })}
       </div>
       <Price {...props} />
@@ -67,24 +72,22 @@ const Title = ({ state, handle }) => {
   );
 };
 
-const Specs = ({ state, handle, num }) => {
-  const lastNum = state.specJsx[state.specJsx.length - 1];
-  console.log(state.specs);
+const Specs = ({ state, handle, i }) => {
   return (
     <div className="spec-field">
       <TextField
         id="outlined-basic"
-        label={`Spec ${num}`}
+        label={`Spec ${i}`}
         variant="outlined"
-        value={state.specs[num]}
-        onChange={(e) => handle.specsChange(num, e.target.value)}
+        // value={state.specJsx[i].id}
+        onChange={(e) => handle.specsChange(i, e.target.value)}
       />
-      {lastNum === num ? (
+      {state.specLastIndex === i ? (
         <IconButton onClick={() => handle.addSpecField()}>
           <AddCircleIcon />
         </IconButton>
       ) : (
-        <IconButton onClick={() => handle.removeSpecField(num)}>
+        <IconButton onClick={() => handle.removeSpecField(state.specLastIndex)}>
           <RemoveCircleIcon />
         </IconButton>
       )}
