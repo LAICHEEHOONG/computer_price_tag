@@ -3,13 +3,16 @@ import TextField from "@mui/material/TextField";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { IconButton } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
+import { updateInputData } from "../features/input/inputSlice";
+// import {  } from './counterSlice'
 
 const InputField = () => {
+  const dispatch = useDispatch();
   const initState = {
     specJsx: [{ id: 0, value: "" }],
     specLastIndex: 0,
     title: "",
-    specs: [],
     price: "",
   };
 
@@ -23,21 +26,28 @@ const InputField = () => {
       let newId = state.specJsx[state.specJsx.length - 1].id + 1;
       state.specJsx = [...state.specJsx, { id: newId, value: "" }];
       handle.updateLastIndex();
+      handle.toReducer();
     },
     removeSpecField: (_id) => {
       let removeSpecJsx = state.specJsx.filter((obj) => obj.id !== _id);
       state.specJsx = removeSpecJsx;
       handle.updateLastIndex();
+      handle.toReducer();
     },
     titleChange: (value) => {
       state.title = value;
+      handle.toReducer();
     },
     priceChange: (value) => {
       state.price = value;
+      handle.toReducer();
     },
-    specsChange: (_id, _value) => {
-      console.log(_value);
-      state.specJsx[_id].value = _value;
+    specsChange: (i, _value) => {
+      state.specJsx[i].value = _value;
+      handle.toReducer();
+    },
+    toReducer: () => {
+      dispatch(updateInputData(state));
     },
   });
 
@@ -48,7 +58,7 @@ const InputField = () => {
       <Title {...props} />
       <div className="input-specs-container">
         {state.specJsx.map((obj, i) => {
-          return <Specs key={i} {...props} _id={obj.id} i={i}/>;
+          return <Specs key={i} {...props} _id={obj.id} i={i} />;
         })}
       </div>
       <Price {...props} />
@@ -74,17 +84,16 @@ const Title = ({ state, handle }) => {
 };
 
 const Specs = ({ state, handle, _id, i }) => {
-  console.log(state.specJsx);
   return (
     <div className="spec-field">
       <TextField
         id="outlined-basic"
-        label={`Spec ${_id}`}
+        label={"Spec"}
         variant="outlined"
-        value={state.specJsx[i].value}
-        onChange={(e) => handle.specsChange(_id, e.target.value)}
+        value={state?.specJsx[i]?.value}
+        onChange={(e) => handle.specsChange(i, e.target.value)}
       />
-      {state?.specLastIndex === _id ? (
+      {state.specLastIndex === i ? (
         <IconButton onClick={() => handle.addSpecField()}>
           <AddCircleIcon />
         </IconButton>
