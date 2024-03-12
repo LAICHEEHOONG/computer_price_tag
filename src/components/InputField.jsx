@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
@@ -36,7 +36,8 @@ const InputField = () => {
       state.price = value;
     },
     specsChange: (_id, _value) => {
-      state.specs[_id].value = _value;
+      console.log(_value);
+      state.specJsx[_id].value = _value;
     },
   });
 
@@ -46,8 +47,8 @@ const InputField = () => {
     <div className="input-field-container">
       <Title {...props} />
       <div className="input-specs-container">
-        {state.specJsx.map((_id) => {
-          return <Specs key={_id} {...props} i={_id} />;
+        {state.specJsx.map((obj, i) => {
+          return <Specs key={i} {...props} _id={obj.id} i={i}/>;
         })}
       </div>
       <Price {...props} />
@@ -72,22 +73,23 @@ const Title = ({ state, handle }) => {
   );
 };
 
-const Specs = ({ state, handle, i }) => {
+const Specs = ({ state, handle, _id, i }) => {
+  console.log(state.specJsx);
   return (
     <div className="spec-field">
       <TextField
         id="outlined-basic"
-        label={`Spec ${i}`}
+        label={`Spec ${_id}`}
         variant="outlined"
-        // value={state.specJsx[i].id}
-        onChange={(e) => handle.specsChange(i, e.target.value)}
+        value={state.specJsx[i].value}
+        onChange={(e) => handle.specsChange(_id, e.target.value)}
       />
-      {state.specLastIndex === i ? (
+      {state?.specLastIndex === _id ? (
         <IconButton onClick={() => handle.addSpecField()}>
           <AddCircleIcon />
         </IconButton>
       ) : (
-        <IconButton onClick={() => handle.removeSpecField(state.specLastIndex)}>
+        <IconButton onClick={() => handle.removeSpecField(_id)}>
           <RemoveCircleIcon />
         </IconButton>
       )}
