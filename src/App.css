@@ -50,3 +50,29 @@
   align-self: center;
   margin: 10px;
 }
+
+.price-tag-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.bank-price-container {
+  display: flex;
+}
+
+.price-tag-title {
+  border: 1px solid black;
+  margin-top: -7px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+.price-tag-spec {
+  border: 1px solid black;
+  /* margin-top: -7px; */
+  /* text-align: center; */
+  font-size: 2rem;
+  font-weight: bolder;
+  border-top: hidden;
+}
