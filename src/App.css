@@ -54,6 +54,7 @@
 .price-tag-container {
   display: flex;
   flex-direction: column;
+  width: 500px;
 }
 
 .bank-price-container {
@@ -64,15 +65,99 @@
   border: 1px solid black;
   margin-top: -7px;
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: bolder;
+  height: 48px;
 }
 
 .price-tag-spec {
   border: 1px solid black;
-  /* margin-top: -7px; */
-  /* text-align: center; */
-  font-size: 2rem;
+  font-size: 1rem;
+  padding-left: 50px;
+  border-top: none;
+  min-height: 300px;
+}
+
+.bank-price-container {
+  border: 1px solid black;
+  border-top: none;
+}
+
+.price-tag-bank {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  gap: 2px;
+  padding: 5px;
+  border: 1px solid black;
+  border-top: none; /* Hide the top border */
+  border-left: none; /* Hide the left border */
+  border-bottom: none; /* Hide the bottom border */
+}
+
+.bank-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  padding: 10px;
+}
+
+.bank-logo {
+  width: 60px;
+}
+
+.ambank-logo {
+  border-radius: 15%;
+}
+
+.price-tag-price {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: end;
+  padding: 20px;
+}
+
+.price-tag-rm {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.rm {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 13px;
+}
+
+.bulan-price {
   font-weight: bolder;
-  border-top: hidden;
+  font-size: 3rem;
+}
+
+.bulan,
+.harga,
+.selling-price {
+  font-weight: bold;
+}
+
+.harga {
+  margin-top: 30px;
+}
+
+.price-tag-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-top: none;
+  padding: 20px;
+}
+
+.price-tag-head-logo {
+  width: 500px;
 }

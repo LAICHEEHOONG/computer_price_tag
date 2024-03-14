@@ -28,7 +28,6 @@ export const inputSlice = createSlice({
     },
     titleChange: (state, action) => {
       state.title = action.payload;
-      inputSlice.actions.test();
     },
     priceChange: (state, action) => {
       state.price = action.payload;
@@ -46,7 +45,6 @@ export const {
   titleChange,
   priceChange,
   specsChange,
-  test,
 } = inputSlice.actions;
 
 export default inputSlice.reducer;
