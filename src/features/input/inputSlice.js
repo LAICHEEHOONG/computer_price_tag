@@ -1,29 +1,52 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  value: 0,
-  inputData: {}
-}
+  specJsx: [{ id: 0, value: "" }],
+  specLastIndex: 0,
+  title: "",
+  price: "",
+};
 
 export const inputSlice = createSlice({
-  name: 'input',
+  name: "input",
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1
+    updateLastIndex: (state, action) => {
+      state.specLastIndex = state.specJsx.length - 1;
     },
-    decrement: (state) => {
-      state.value -= 1
+    addSpecField: (state, action) => {
+      let newId = state.specJsx[state.specJsx.length - 1].id + 1;
+      state.specJsx = [...state.specJsx, { id: newId, value: "" }];
+      state.specLastIndex = state.specJsx.length - 1;
     },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload
+    removeSpecField: (state, action) => {
+      let removeSpecJsx = state.specJsx.filter(
+        (obj) => obj.id !== action.payload
+      ); 
+      state.specJsx = removeSpecJsx;
+      state.specLastIndex = state.specJsx.length - 1;
     },
-    updateInputData: (state, action) => {
-      state.inputData = action.payload
+    titleChange: (state, action) => {
+      state.title = action.payload;
+      inputSlice.actions.test();
+    },
+    priceChange: (state, action) => {
+      state.price = action.payload;
+    },
+    specsChange: (state, action) => {
+      state.specJsx[action.payload.id].value = action.payload.value;
     }
   },
-})
+});
 
-export const { increment, decrement, incrementByAmount, updateInputData } = inputSlice.actions
+export const {
+  updateLastIndex,
+  addSpecField,
+  removeSpecField,
+  titleChange,
+  priceChange,
+  specsChange,
+  test,
+} = inputSlice.actions;
 
-export default inputSlice.reducer
+export default inputSlice.reducer;

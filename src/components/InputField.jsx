@@ -1,55 +1,37 @@
-import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { IconButton } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import { updateInputData } from "../features/input/inputSlice";
-// import {  } from './counterSlice'
+import {
+  addSpecField,
+  removeSpecField,
+  titleChange,
+  priceChange,
+  specsChange,
+} from "../features/input/inputSlice";
 
 const InputField = () => {
+  const state = useSelector((state) => state.input);
   const dispatch = useDispatch();
-  const initState = {
-    specJsx: [{ id: 0, value: "" }],
-    specLastIndex: 0,
-    title: "",
-    price: "",
-  };
 
-  const [state, setState] = useState(initState);
-
-  const handle = setStateHandler(setState, state, {
-    updateLastIndex: () => {
-      state.specLastIndex = state.specJsx.length - 1;
-    },
+  const handle = {
     addSpecField: () => {
-      let newId = state.specJsx[state.specJsx.length - 1].id + 1;
-      state.specJsx = [...state.specJsx, { id: newId, value: "" }];
-      handle.updateLastIndex();
-      handle.toReducer();
+      dispatch(addSpecField());
     },
-    removeSpecField: (_id) => {
-      let removeSpecJsx = state.specJsx.filter((obj) => obj.id !== _id);
-      state.specJsx = removeSpecJsx;
-      handle.updateLastIndex();
-      handle.toReducer();
+    removeSpecField: (id) => {
+      dispatch(removeSpecField(id));
     },
     titleChange: (value) => {
-      state.title = value;
-      handle.toReducer();
+      dispatch(titleChange(value));
     },
     priceChange: (value) => {
-      state.price = value;
-      handle.toReducer();
+      dispatch(priceChange(value));
     },
-    specsChange: (i, _value) => {
-      state.specJsx[i].value = _value;
-      handle.toReducer();
+    specsChange: (id, value) => {
+      dispatch(specsChange({ id, value }));
     },
-    toReducer: () => {
-      dispatch(updateInputData(state));
-    },
-  });
+  };
 
   const props = { state, handle };
 
@@ -84,24 +66,27 @@ const Title = ({ state, handle }) => {
 };
 
 const Specs = ({ state, handle, _id, i }) => {
+  let fieldValue = state.specJsx.find((item) => item.id === _id).value;
   return (
     <div className="spec-field">
       <TextField
         id="outlined-basic"
         label={"Spec"}
         variant="outlined"
-        value={state?.specJsx[i]?.value}
+        value={fieldValue}
         onChange={(e) => handle.specsChange(i, e.target.value)}
       />
-      {state.specLastIndex === i ? (
-        <IconButton onClick={() => handle.addSpecField()}>
-          <AddCircleIcon />
-        </IconButton>
-      ) : (
-        <IconButton onClick={() => handle.removeSpecField(_id)}>
-          <RemoveCircleIcon />
-        </IconButton>
-      )}
+      <div className="spec-icon-btn">
+        {state.specLastIndex === i ? (
+          <IconButton onClick={() => handle.addSpecField()}>
+            <AddCircleIcon />
+          </IconButton>
+        ) : (
+          <IconButton onClick={() => handle.removeSpecField(_id)}>
+            <RemoveCircleIcon />
+          </IconButton>
+        )}
+      </div>
     </div>
   );
 };
@@ -120,15 +105,3 @@ const Price = ({ state, handle }) => {
 };
 
 /*** TOOLS *************** TOOLS **************** TOOLS ********************* TOOLS ****************************************************/
-const setStateHandler = (setState, state, actions) => {
-  const wrappedActions = {};
-
-  for (const key in actions) {
-    wrappedActions[key] = (...args) => {
-      actions[key](...args);
-      setState({ ...state });
-    };
-  }
-
-  return wrappedActions;
-};
