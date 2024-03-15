@@ -9,6 +9,8 @@ import {
   titleChange,
   priceChange,
   specsChange,
+  openAlert,
+  setAlertMessage,
 } from "../features/input/inputSlice";
 
 const InputField = () => {
@@ -26,7 +28,21 @@ const InputField = () => {
       dispatch(titleChange(value));
     },
     priceChange: (value) => {
-      dispatch(priceChange(value));
+      let toNumber = Number(value);
+
+      if (isNaN(toNumber)) {
+        toNumber = 0;
+        dispatch(openAlert(true));
+        dispatch(setAlertMessage("Price field only accepts numbers."));
+      }
+
+      if (toNumber > 999999) {
+        toNumber = 0;
+        dispatch(openAlert(true));
+        dispatch(setAlertMessage("The price is too high."));
+      }
+
+      dispatch(priceChange(toNumber));
     },
     specsChange: (id, value) => {
       dispatch(specsChange({ id, value }));
@@ -70,6 +86,7 @@ const Specs = ({ state, handle, _id, i }) => {
   return (
     <div className="spec-field">
       <TextField
+        className="input-field-title"
         id="outlined-basic"
         label={"Spec"}
         variant="outlined"

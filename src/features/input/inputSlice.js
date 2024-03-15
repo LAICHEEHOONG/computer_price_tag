@@ -5,6 +5,8 @@ const initialState = {
   specLastIndex: 0,
   title: "",
   price: "",
+  alert: false,
+  alertMessage: ''
 };
 
 export const inputSlice = createSlice({
@@ -34,7 +36,14 @@ export const inputSlice = createSlice({
     },
     specsChange: (state, action) => {
       state.specJsx[action.payload.id].value = action.payload.value;
+    },
+    openAlert: (state, action) => {
+      state.alert = action.payload;
+    },
+    setAlertMessage: (state, action) => {
+      state.alertMessage = action.payload;
     }
+
   },
 });
 
@@ -45,6 +54,8 @@ export const {
   titleChange,
   priceChange,
   specsChange,
+  openAlert,
+  setAlertMessage
 } = inputSlice.actions;
 
 export default inputSlice.reducer;

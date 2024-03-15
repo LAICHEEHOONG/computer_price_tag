@@ -7,12 +7,19 @@ import { useSelector, useDispatch } from "react-redux";
 
 const PriceTag = () => {
   const state = useSelector((state) => state.input);
+  const productTitle = () => {
+    if (state.title.length > 25) {
+      return state.title.substring(0, 30) + "...";
+    } else {
+      return state.title;
+    }
+  };
   return (
     <div className="price-tag-container">
       <div className="price-tag-head">
         <img className="price-tag-head-logo" src={Logo} alt="Logo" />
       </div>
-      <div className="price-tag-title">{state.title}</div>
+      <div className="price-tag-title">{productTitle()}</div>
       <div className="price-tag-spec">
         <ul>
           {state.specJsx.map((obj, i) => {
@@ -44,7 +51,9 @@ const PriceTag = () => {
         <div className="price-tag-price">
           <div className="price-tag-rm">
             <div className="rm">RM</div>
-            <div className="bulan-price">{`${state.price / 12}`}</div>
+            <div className="bulan-price">{`${Math.round(
+              state.price / 12
+            )}`}</div>
           </div>
           <div className="bulan">x 12 bulan</div>
           <div className="harga">Harga</div>
