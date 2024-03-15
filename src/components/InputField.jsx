@@ -86,7 +86,7 @@ const Specs = ({ state, handle, _id, i }) => {
   return (
     <div className="spec-field">
       <TextField
-        className="input-field-title"
+        className="input-field-spec"
         id="outlined-basic"
         label={"Spec"}
         variant="outlined"
