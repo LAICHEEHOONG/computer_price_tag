@@ -4,6 +4,14 @@
   display: flex;
 }
 
+.view-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+}
+
 .navbar-header {
   display: flex;
   justify-content: center;
@@ -171,6 +179,15 @@
 
 .price-tag-head-logo {
   width: 500px;
+}
+
+.add-btn-container {
+  display: flex;
+  align-self: flex-start;
+}
+
+.add-btn {
+  width: 250px;
 }
 
 @media (max-width: 850px) {

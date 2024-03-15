@@ -6,7 +6,8 @@ const initialState = {
   title: "",
   price: "",
   alert: false,
-  alertMessage: ''
+  alertMessage: "",
+  priceTags: [],
 };
 
 export const inputSlice = createSlice({
@@ -24,7 +25,7 @@ export const inputSlice = createSlice({
     removeSpecField: (state, action) => {
       let removeSpecJsx = state.specJsx.filter(
         (obj) => obj.id !== action.payload
-      ); 
+      );
       state.specJsx = removeSpecJsx;
       state.specLastIndex = state.specJsx.length - 1;
     },
@@ -42,8 +43,22 @@ export const inputSlice = createSlice({
     },
     setAlertMessage: (state, action) => {
       state.alertMessage = action.payload;
-    }
+    },
+    addPriceTag: (state, action) => {
+      let obj = {
+        specJsx: state.specJsx,
+        title: state.title,
+        price: state.price,
+      };
 
+      state.priceTags = [...state.priceTags, obj];
+      state.specJsx = [{ id: 0, value: "" }];
+      state.specLastIndex = 0;
+      state.title = "";
+      state.price = "";
+      state.alert = false;
+      state.alertMessage = "";
+    },
   },
 });
 
@@ -55,7 +70,8 @@ export const {
   priceChange,
   specsChange,
   openAlert,
-  setAlertMessage
+  setAlertMessage,
+  addPriceTag,
 } = inputSlice.actions;
 
 export default inputSlice.reducer;

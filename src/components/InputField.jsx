@@ -2,6 +2,7 @@ import TextField from "@mui/material/TextField";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { IconButton } from "@mui/material";
+import Button from "@mui/material/Button";
 import { useSelector, useDispatch } from "react-redux";
 import {
   addSpecField,
@@ -11,6 +12,7 @@ import {
   specsChange,
   openAlert,
   setAlertMessage,
+  addPriceTag,
 } from "../features/input/inputSlice";
 
 const InputField = () => {
@@ -32,20 +34,26 @@ const InputField = () => {
 
       if (isNaN(toNumber)) {
         toNumber = 0;
-        dispatch(openAlert(true));
-        dispatch(setAlertMessage("Price field only accepts numbers."));
+        handle.alert("Price field only accepts numbers.");
       }
 
       if (toNumber > 999999) {
         toNumber = 0;
-        dispatch(openAlert(true));
-        dispatch(setAlertMessage("The price is too high."));
+        handle.alert("The price is too high.");
       }
 
       dispatch(priceChange(toNumber));
     },
     specsChange: (id, value) => {
       dispatch(specsChange({ id, value }));
+    },
+    addPriceTag: () => {
+      dispatch(addPriceTag());
+      handle.alert("Price tag added");
+    },
+    alert: (message) => {
+      dispatch(openAlert(true));
+      dispatch(setAlertMessage(message));
     },
   };
 
@@ -60,6 +68,7 @@ const InputField = () => {
         })}
       </div>
       <Price {...props} />
+      <Add {...props} />
     </div>
   );
 };
@@ -118,6 +127,21 @@ const Price = ({ state, handle }) => {
       value={state.price}
       onChange={(e) => handle.priceChange(e.target.value)}
     />
+  );
+};
+
+const Add = ({ state, handle }) => {
+  return (
+    <div className="add-btn-container">
+      <Button
+        className="add-btn"
+        variant="contained"
+        onClick={handle.addPriceTag}
+        disabled={state.title ? false : true}
+      >
+        Add
+      </Button>
+    </div>
   );
 };
 
