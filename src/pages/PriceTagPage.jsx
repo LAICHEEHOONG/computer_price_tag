@@ -7,6 +7,7 @@ const PriceTagPage = () => {
   return <div className="view-page-container">
     {
       priceTags.map((obj, i) => {
+        obj = {...obj, degree: 90}
         return <PriceTagCore key={`${i}-${obj.title}`} prop={obj} />
       })
     }

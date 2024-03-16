@@ -5,16 +5,16 @@ import Pb from "../assets/pb.png";
 import Maybank from "../assets/maybank.png";
 
 const PriceTagCore = ({ prop }) => {
-  const { title, specJsx, price } = prop;
+  const { title, specJsx, price, degree } = prop;
   const productTitle = () => {
     if (title.length > 25) {
-      return title.substring(0, 30) + "...";
+      return title.substring(0, 27) + "...";
     } else {
       return title;
     }
   };
   return (
-    <div className="price-tag-container">
+    <div className="price-tag-container" style={{ transform: `rotate(${degree}deg)` }}>
       <div className="price-tag-head">
         <img className="price-tag-head-logo" src={Logo} alt="Logo" />
       </div>

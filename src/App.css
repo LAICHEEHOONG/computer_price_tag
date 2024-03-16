@@ -2,14 +2,7 @@
   padding-left: 100px;
   padding-right: 100px;
   display: flex;
-}
-
-.view-page-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  max-width: 1200px;
+  margin-top: 150px;
 }
 
 .navbar-header {
@@ -36,6 +29,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 50px;
+  padding-right: 200px;
 }
 
 .input-field-title {
@@ -45,8 +40,6 @@
 }
 
 .input-field-spec {
-  /* align-self: flex-start;
-  margin-bottom: 15px !important; */
   width: 250px;
 }
 
@@ -69,12 +62,6 @@
   margin: 10px;
 }
 
-.price-tag-container {
-  display: flex;
-  flex-direction: column;
-  width: 500px;
-}
-
 .bank-price-container {
   display: flex;
 }
@@ -83,18 +70,18 @@
   border: 1px solid black;
   margin-top: -7px;
   text-align: center;
-  font-size: 1.75rem;
+  font-size: 2.3rem;
   font-weight: bolder;
-  height: 48px;
+  height: 65px;
+  line-height: 1.8;
 }
 
 .price-tag-spec {
   border: 1px solid black;
-  font-size: 1rem;
+  font-size: 1.3rem;
   padding: 20px;
-  /* padding-left: 50px; */
   border-top: none;
-  min-height: 300px;
+  min-height: 400px;
 }
 
 .bank-price-container {
@@ -109,11 +96,12 @@
   align-items: center;
   font-weight: bold;
   gap: 2px;
-  padding: 5px;
+  padding: 50px;
   border: 1px solid black;
-  border-top: none; /* Hide the top border */
-  border-left: none; /* Hide the left border */
-  border-bottom: none; /* Hide the bottom border */
+  border-top: none;
+  border-left: none;
+  border-bottom: none;
+  font-size: 1.3rem;
 }
 
 .bank-logo-container {
@@ -121,7 +109,7 @@
   justify-content: center;
   align-items: center;
   gap: 3px;
-  padding: 10px;
+  padding: 20px;
 }
 
 .bank-logo {
@@ -139,6 +127,7 @@
   justify-content: space-evenly;
   align-items: end;
   padding: 20px;
+  font-size: 1.3rem;
 }
 
 .price-tag-rm {
@@ -177,10 +166,6 @@
   padding: 20px;
 }
 
-.price-tag-head-logo {
-  width: 500px;
-}
-
 .add-btn-container {
   display: flex;
   align-self: flex-start;
@@ -188,6 +173,28 @@
 
 .add-btn {
   width: 250px;
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.view-page-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 600px;
+}
+
+.price-tag-head-logo {
+  width: 600px;
+}
+
+.price-tag-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: -230px;
 }
 
 @media (max-width: 850px) {

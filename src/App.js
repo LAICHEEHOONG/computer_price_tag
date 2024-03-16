@@ -7,7 +7,7 @@ import AlertSnackbar from "./components/AlertSnackbar";
 
 function App() {
   return (
-    <div>
+    <div className="app-container">
       <Navbar />
       <AlertSnackbar />
       <Routes>
