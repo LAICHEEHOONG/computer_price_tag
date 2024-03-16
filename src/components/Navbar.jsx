@@ -16,10 +16,13 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { hiddenNav } from "../features/input/inputSlice";
 
 const drawerWidth = 240;
 
 function Navbar(props) {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   let currentUrl = location.pathname;
@@ -29,6 +32,14 @@ function Navbar(props) {
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
+  };
+
+  const clickPrint = () => {
+    dispatch(hiddenNav(false));
+    // window.print();
+    setTimeout(() => {
+      dispatch(hiddenNav(true));
+    }, 4000);
   };
 
   const drawer = (
@@ -95,13 +106,22 @@ function Navbar(props) {
                 VIEW
               </Button>
             ) : (
-              <Button
-                key={"HOME"}
-                sx={{ color: "#fff" }}
-                onClick={() => navigate("/")}
-              >
-                HOME
-              </Button>
+              <>
+                <Button
+                  key={"HOME"}
+                  sx={{ color: "#fff" }}
+                  onClick={() => navigate("/")}
+                >
+                  HOME
+                </Button>
+                <Button
+                  key={"PRINT"}
+                  sx={{ color: "#fff" }}
+                  onClick={() => clickPrint()}
+                >
+                  PRINT
+                </Button>
+              </>
             )}
           </Box>
         </Toolbar>
@@ -128,9 +148,6 @@ function Navbar(props) {
       </nav>
       <Box component="main" sx={{ p: 3 }}>
         <Toolbar />
-        {/* <Typography>
-                    Children
-                </Typography> */}
       </Box>
     </Box>
   );

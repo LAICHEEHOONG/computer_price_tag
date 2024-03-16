@@ -8,6 +8,7 @@ const initialState = {
   alert: false,
   alertMessage: "",
   priceTags: [],
+  showNav: true,
 };
 
 export const inputSlice = createSlice({
@@ -59,6 +60,9 @@ export const inputSlice = createSlice({
       state.alert = false;
       state.alertMessage = "";
     },
+    hiddenNav: (state, action) => {
+      state.showNav = action.payload;
+    },
   },
 });
 
@@ -72,6 +76,7 @@ export const {
   openAlert,
   setAlertMessage,
   addPriceTag,
+  hiddenNav,
 } = inputSlice.actions;
 
 export default inputSlice.reducer;
