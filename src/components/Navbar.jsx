@@ -35,12 +35,7 @@ function Navbar(props) {
   };
 
   const clickPrint = () => {
-    // dispatch(hiddenNav(false));
-    console.log('print')
-    // window.print();
-    // setTimeout(() => {
-    //   dispatch(hiddenNav(true));
-    // }, 4000);
+    window.print();
   };
 
   const drawer = (
@@ -75,83 +70,83 @@ function Navbar(props) {
 
   return (
     <div className="navbar-container">
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar component="nav">
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            <div className="desktop-navbar ">
-              <LocalOfferIcon />
-              <div>PRICE TAG MAKER</div>
-            </div>
-          </Typography>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {currentUrl === "/" ? (
-              <Button
-                key={"VIEW"}
-                sx={{ color: "#fff" }}
-                onClick={() => navigate("/pricetag")}
-              >
-                VIEW
-              </Button>
-            ) : (
-              <>
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        <AppBar component="nav">
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { sm: "none" } }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            >
+              <div className="desktop-navbar ">
+                <LocalOfferIcon />
+                <div>PRICE TAG MAKER</div>
+              </div>
+            </Typography>
+            <Box sx={{ display: { xs: "none", sm: "block" } }}>
+              {currentUrl === "/" ? (
                 <Button
-                  key={"HOME"}
+                  key={"VIEW"}
                   sx={{ color: "#fff" }}
-                  onClick={() => navigate("/")}
+                  onClick={() => navigate("/pricetag")}
                 >
-                  HOME
+                  VIEW
                 </Button>
-                <Button
-                  key={"PRINT"}
-                  sx={{ color: "#fff" }}
-                  onClick={() => clickPrint()}
-                >
-                  PRINT
-                </Button>
-              </>
-            )}
-          </Box>
-        </Toolbar>
-      </AppBar>
-      <nav>
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </nav>
-      <Box component="main" sx={{ p: 3 }}>
-        <Toolbar />
+              ) : (
+                <>
+                  <Button
+                    key={"HOME"}
+                    sx={{ color: "#fff" }}
+                    onClick={() => navigate("/")}
+                  >
+                    HOME
+                  </Button>
+                  <Button
+                    key={"PRINT"}
+                    sx={{ color: "#fff" }}
+                    onClick={() => clickPrint()}
+                  >
+                    PRINT
+                  </Button>
+                </>
+              )}
+            </Box>
+          </Toolbar>
+        </AppBar>
+        <nav>
+          <Drawer
+            container={container}
+            variant="temporary"
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+            sx={{
+              display: { xs: "block", sm: "none" },
+              "& .MuiDrawer-paper": {
+                boxSizing: "border-box",
+                width: drawerWidth,
+              },
+            }}
+          >
+            {drawer}
+          </Drawer>
+        </nav>
+        <Box component="main" sx={{ p: 3 }}>
+          <Toolbar />
+        </Box>
       </Box>
-    </Box>
     </div>
   );
 }
