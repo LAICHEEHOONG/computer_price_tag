@@ -81,7 +81,7 @@
   font-size: 1.3rem;
   padding: 20px;
   border-top: none;
-  min-height: 400px;
+  min-height: 250px;
 }
 
 .bank-price-container {
@@ -96,7 +96,7 @@
   align-items: center;
   font-weight: bold;
   gap: 2px;
-  padding: 50px;
+  padding: 10px;
   border: 1px solid black;
   border-top: none;
   border-left: none;
@@ -109,11 +109,11 @@
   justify-content: center;
   align-items: center;
   gap: 3px;
-  padding: 20px;
+  /* padding: 10px; */
 }
 
 .bank-logo {
-  width: 60px;
+  width: 50px;
 }
 
 .ambank-logo {
@@ -126,7 +126,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: end;
-  padding: 20px;
+  padding: 10px;
   font-size: 1.3rem;
 }
 
@@ -163,7 +163,8 @@
   align-items: center;
   border: 1px solid black;
   border-top: none;
-  padding: 20px;
+  font-size: 0.75rem;
+  padding: 10px;
 }
 
 .add-btn-container {
@@ -184,33 +185,44 @@
 .view-page-container {
   display: flex;
   flex-wrap: wrap;
-  width: 600px;
+  width: 400px;
   page-break-after: always;
 }
 
-.price-tag-head-logo {
-  width: 600px;
+/* .price-tag-head-logo {
+  width: 400px;
+} */
+
+.all-width {
+  width: 400px;
 }
 
 .price-tag-container {
   display: flex;
   flex-direction: column;
-  margin-bottom: -200px;
+  margin-bottom: -180px;
 }
 
 .price-tag-print-container {
   page-break-after: always;
+  margin-top: -50px;
 }
 
-@media (max-width: 850px) {
+/* @media (max-width: 850px) {
   .home-page-container {
     flex-direction: column;
     gap: 50px;
   }
-}
+} */
 
 @media print {
-  .navbar-container, .alert-container {
+  .navbar-container,
+  .alert-container {
     display: none !important;
   }
+
+  /* @page {
+    size: A4;
+    margin: 0;
+  } */
 }

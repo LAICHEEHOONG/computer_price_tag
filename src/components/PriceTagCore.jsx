@@ -14,9 +14,12 @@ const PriceTagCore = ({ prop }) => {
     }
   };
   return (
-    <div className="price-tag-container" style={{ transform: `rotate(${degree}deg)` }}>
+    <div
+      className="price-tag-container all-width"
+      style={{ transform: `rotate(${degree}deg)` }}
+    >
       <div className="price-tag-head">
-        <img className="price-tag-head-logo" src={Logo} alt="Logo" />
+        <img className="price-tag-head-logo all-width" src={Logo} alt="Logo" />
       </div>
       <div className="price-tag-title">{productTitle()}</div>
       <div className="price-tag-spec">
