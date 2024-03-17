@@ -5,7 +5,9 @@ const HomePage = () => {
   return (
     <div className="home-page-container">
       <InputField />
-      <PriceTag />
+      <div className="home-page-pricetag-container">
+        <PriceTag />
+      </div>
     </div>
   );
 };

@@ -7,7 +7,7 @@ import Maybank from "../assets/maybank.png";
 const PriceTagCore = ({ prop }) => {
   const { title, specJsx, price, degree } = prop;
   const productTitle = () => {
-    if (title.length > 25) {
+    if (title.length > 27) {
       return title.substring(0, 27) + "...";
     } else {
       return title;
@@ -19,7 +19,7 @@ const PriceTagCore = ({ prop }) => {
       style={{ transform: `rotate(${degree}deg)` }}
     >
       <div className="price-tag-head">
-        <img className="price-tag-head-logo all-width" src={Logo} alt="Logo" />
+        <img className="all-width" src={Logo} alt="Logo" />
       </div>
       <div className="price-tag-title">{productTitle()}</div>
       <div className="price-tag-spec">
