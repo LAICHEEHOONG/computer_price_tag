@@ -17,7 +17,7 @@ import Button from "@mui/material/Button";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { hiddenNav } from "../features/input/inputSlice";
+// import { hiddenNav } from "../features/input/inputSlice";
 
 const drawerWidth = 240;
 
@@ -35,11 +35,12 @@ function Navbar(props) {
   };
 
   const clickPrint = () => {
-    dispatch(hiddenNav(false));
+    // dispatch(hiddenNav(false));
+    console.log('print')
     // window.print();
-    setTimeout(() => {
-      dispatch(hiddenNav(true));
-    }, 4000);
+    // setTimeout(() => {
+    //   dispatch(hiddenNav(true));
+    // }, 4000);
   };
 
   const drawer = (
@@ -73,6 +74,7 @@ function Navbar(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
+    <div className="navbar-container">
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar component="nav">
@@ -150,6 +152,7 @@ function Navbar(props) {
         <Toolbar />
       </Box>
     </Box>
+    </div>
   );
 }
 

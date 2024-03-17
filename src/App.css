@@ -208,3 +208,9 @@
     gap: 50px;
   }
 }
+
+@media print {
+  .navbar-container, .alert-container {
+    display: none !important;
+  }
+}

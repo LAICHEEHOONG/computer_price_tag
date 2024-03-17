@@ -7,12 +7,15 @@ import AlertSnackbar from "./components/AlertSnackbar";
 import { useSelector, useDispatch } from "react-redux";
 
 function App() {
-  const showNav = useSelector((state) => state.input.showNav);
+  // const showNav = useSelector((state) => state.input.showNav);
 
   return (
     <div className="app-container">
-      {showNav && <Navbar />}
-      <AlertSnackbar />
+      <Navbar />
+      <div className="alert-container">
+        <AlertSnackbar />
+      </div>
+
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/pricetag" element={<PriceTagPage />} />
