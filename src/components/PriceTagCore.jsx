@@ -7,8 +7,8 @@ import Maybank from "../assets/maybank.png";
 const PriceTagCore = ({ prop }) => {
   const { title, specJsx, price, degree } = prop;
   const productTitle = () => {
-    if (title.length > 27) {
-      return title.substring(0, 27) + "...";
+    if (title.length > 31) {
+      return title.substring(0, 31) + "...";
     } else {
       return title;
     }

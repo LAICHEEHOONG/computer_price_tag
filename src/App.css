@@ -54,7 +54,6 @@
   display: flex;
   margin-bottom: 10px;
   align-self: flex-start;
-  /* align-items: center; */
 }
 
 .spec-icon-btn {
@@ -74,15 +73,15 @@
   font-size: 1.2rem;
   font-weight: bolder;
   height: 45px;
-  line-height: 2.4;
+  line-height: 2;
+  padding: 5px;
 }
 
 .price-tag-spec {
   border: 1px solid black;
   font-size: 0.8rem;
-  /* padding: 10px; */
   border-top: none;
-  height: 200px;
+  height: 220px;
 }
 
 .bank-price-container {
@@ -110,7 +109,6 @@
   justify-content: center;
   align-items: center;
   gap: 3px;
-  /* padding: 10px; */
 }
 
 .bank-logo {
@@ -191,10 +189,6 @@
   page-break-after: always;
 }
 
-/* .price-tag-head-logo {
-  width: 400px;
-} */
-
 .all-width {
   width: 400px;
 }
@@ -202,7 +196,6 @@
 .price-tag-container {
   display: flex;
   flex-direction: column;
-  /* margin-bottom: -180px; */
 }
 
 .price-tag-print-container {
@@ -211,29 +204,15 @@
   justify-content: center;
   align-items: center;
   page-break-after: always;
-
-  /* margin-top: 50px; */
 }
 
 .home-page-pricetag-container {
   align-self: self-start;
 }
 
-/* @media (max-width: 850px) {
-  .home-page-container {
-    flex-direction: column;
-    gap: 50px;
-  }
-} */
-
 @media print {
   .navbar-container,
   .alert-container {
     display: none !important;
   }
-
-  /* @page {
-    size: A4;
-    margin: 0;
-  } */
 }
