@@ -16,13 +16,11 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-// import { hiddenNav } from "../features/input/inputSlice";
+
 
 const drawerWidth = 240;
 
 function Navbar(props) {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   let currentUrl = location.pathname;

@@ -29,7 +29,7 @@ const PriceTagPage = () => {
   return (
     <div className="view-page-container">
       {printArr.map((arr, index) => (
-        <div className="price-tag-print-container" key={index}>
+        <div className="price-tag-print-container all-width" key={index}>
           {arr.map((obj, i) => {
             obj = { ...obj, degree: 90 };
             return (
