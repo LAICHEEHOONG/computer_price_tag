@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -17,7 +17,6 @@ import Button from "@mui/material/Button";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import { useNavigate, useLocation } from "react-router-dom";
 
-
 const drawerWidth = 240;
 
 function Navbar(props) {
@@ -25,6 +24,11 @@ function Navbar(props) {
   const navigate = useNavigate();
   const location = useLocation();
   let currentUrl = location.pathname;
+  const repoName = "/computer_price_tag";
+  const isHomeOrComputerPriceTag =
+    currentUrl === "/" ||
+    currentUrl === `${repoName}/` ||
+    currentUrl === `${repoName}/computer_price_tag`;
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -33,14 +37,9 @@ function Navbar(props) {
     setMobileOpen((prevState) => !prevState);
   };
 
-  // const clickPrint = () => {
-  //   dispatch(rotatePriceTags(90));
-  //   console.log("print");
-  //   // window.print();
-  //   setTimeout(() => {
-  //     dispatch(rotatePriceTags(0));
-  //   }, 3000);
-  // };
+  useEffect(() => {
+    console.log(currentUrl);
+  }, []);
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
@@ -54,15 +53,15 @@ function Navbar(props) {
       <List>
         <ListItem disablePadding>
           <ListItemButton component="button" sx={{ textAlign: "center" }}>
-            {currentUrl === "/" || currentUrl === "/computer_price_tag" ? (
+            {isHomeOrComputerPriceTag ? (
               <ListItemText
                 primary={"VIEW"}
-                onClick={() => navigate("/pricetag")}
+                onClick={() => navigate(`${repoName}/pricetag`)}
               />
             ) : (
               <ListItemText
                 primary={"HOME"}
-                onClick={() => navigate("/computer_price_tag")}
+                onClick={() => navigate(`${repoName}/computer_price_tag`)}
               />
             )}
           </ListItemButton>
@@ -95,7 +94,11 @@ function Navbar(props) {
               component="div"
               sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
             >
-              <div className="desktop-navbar" style={{cursor: 'pointer'}} onClick={() => navigate("/computer_price_tag")}>
+              <div
+                className="desktop-navbar"
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate("/computer_price_tag")}
+              >
                 <LocalOfferIcon />
                 <div>PRICE TAG MAKER</div>
               </div>
@@ -137,7 +140,7 @@ function Navbar(props) {
             open={mobileOpen}
             onClose={handleDrawerToggle}
             ModalProps={{
-              keepMounted: true, 
+              keepMounted: true,
             }}
             sx={{
               display: { xs: "block", sm: "none" },
