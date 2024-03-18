@@ -95,7 +95,7 @@
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  gap: 2px;
+  gap: 5px;
   padding: 8px;
   border: 1px solid black;
   border-top: none;
@@ -108,11 +108,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 3px;
+  gap: 5px;
 }
 
 .bank-logo {
-  width: 40px;
+  width: 38px;
 }
 
 .ambank-logo {

@@ -37,7 +37,7 @@ const InputField = () => {
         handle.alert("Price field only accepts numbers.");
       }
 
-      if (toNumber > 99999) {
+      if (toNumber > 999999) {
         toNumber = 0;
         handle.alert("The price is too high.");
       }

@@ -57,7 +57,7 @@ const PriceTagCore = ({ prop }) => {
           </div>
           <div className="bulan">x 12 bulan</div>
           <div className="harga">Harga</div>
-          <div className="selling-price">{`RM ${price}`}</div>
+          <div className="selling-price">{`RM ${price.toLocaleString()}`}</div>
         </div>
       </div>
       <div className="price-tag-footer">
