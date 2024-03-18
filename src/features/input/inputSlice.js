@@ -9,7 +9,7 @@ const initialState = {
   alertMessage: "",
   priceTags: [],
   showNav: true,
-  rotate: 0
+  rotate: 0,
 };
 
 export const inputSlice = createSlice({

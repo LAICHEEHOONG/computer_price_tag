@@ -37,7 +37,7 @@ function Navbar(props) {
   const clickPrint = () => {
     dispatch(rotatePriceTags(90));
     console.log("print");
-    // window.print();
+    window.print();
     setTimeout(() => {
       dispatch(rotatePriceTags(0));
     }, 3000);
