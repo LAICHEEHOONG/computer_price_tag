@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/computer_price_tag/static/css/main.a6783a00.css",
-    "main.js": "/computer_price_tag/static/js/main.e945e5e9.js",
+    "main.js": "/computer_price_tag/static/js/main.f7c71428.js",
     "static/media/cimb.png": "/computer_price_tag/static/media/cimb.feeb41d8474449e162d9.png",
     "static/media/roboto-latin-500-normal.woff2": "/computer_price_tag/static/media/roboto-latin-500-normal.f25d774ecfe0996f8eb5.woff2",
     "static/media/roboto-latin-700-normal.woff2": "/computer_price_tag/static/media/roboto-latin-700-normal.227c93190fe7f82de3f8.woff2",
@@ -63,10 +63,10 @@
     "static/media/roboto-greek-ext-700-normal.woff": "/computer_price_tag/static/media/roboto-greek-ext-700-normal.249853776d22a271b2b5.woff",
     "index.html": "/computer_price_tag/index.html",
     "main.a6783a00.css.map": "/computer_price_tag/static/css/main.a6783a00.css.map",
-    "main.e945e5e9.js.map": "/computer_price_tag/static/js/main.e945e5e9.js.map"
+    "main.f7c71428.js.map": "/computer_price_tag/static/js/main.f7c71428.js.map"
   },
   "entrypoints": [
     "static/css/main.a6783a00.css",
-    "static/js/main.e945e5e9.js"
+    "static/js/main.f7c71428.js"
   ]
 }
