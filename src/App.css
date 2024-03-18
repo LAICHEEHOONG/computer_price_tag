@@ -216,17 +216,22 @@
 }
 
 .price-tag-page-title {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   margin-top: 20px;
   padding: 70px;
 }
 
 @media only screen and (max-width: 1100px) {
   .home-page-container {
-    padding: 0;
+    flex-direction: column;
+    gap: 50px;
   }
   .input-field-container {
     padding: 0;
     justify-content: flex-start;
+    padding-left: 60px;
   }
 }
 

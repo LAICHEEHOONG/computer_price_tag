@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -22,7 +22,7 @@ import { useDispatch } from "react-redux";
 const drawerWidth = 240;
 
 function Navbar(props) {
-  const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const location = useLocation();
   let currentUrl = location.pathname;
@@ -34,14 +34,14 @@ function Navbar(props) {
     setMobileOpen((prevState) => !prevState);
   };
 
-  const clickPrint = () => {
-    dispatch(rotatePriceTags(90));
-    console.log("print");
-    window.print();
-    setTimeout(() => {
-      dispatch(rotatePriceTags(0));
-    }, 3000);
-  };
+  // const clickPrint = () => {
+  //   dispatch(rotatePriceTags(90));
+  //   console.log("print");
+  //   // window.print();
+  //   setTimeout(() => {
+  //     dispatch(rotatePriceTags(0));
+  //   }, 3000);
+  // };
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
@@ -55,7 +55,7 @@ function Navbar(props) {
       <List>
         <ListItem disablePadding>
           <ListItemButton component="button" sx={{ textAlign: "center" }}>
-            {currentUrl === "/" ? (
+            {currentUrl === "/" || currentUrl === "/computer_price_tag" ? (
               <ListItemText
                 primary={"VIEW"}
                 onClick={() => navigate("/pricetag")}
@@ -102,7 +102,7 @@ function Navbar(props) {
               </div>
             </Typography>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
-              {currentUrl === "/" ? (
+              {currentUrl === "/" || currentUrl === "/computer_price_tag" ? (
                 <Button
                   key={"VIEW"}
                   sx={{ color: "#fff" }}
@@ -119,13 +119,13 @@ function Navbar(props) {
                   >
                     HOME
                   </Button>
-                  <Button
+                  {/* <Button
                     key={"PRINT"}
                     sx={{ color: "#fff" }}
                     onClick={() => clickPrint()}
                   >
                     PRINT
-                  </Button>
+                  </Button> */}
                 </>
               )}
             </Box>
@@ -138,7 +138,7 @@ function Navbar(props) {
             open={mobileOpen}
             onClose={handleDrawerToggle}
             ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
+              keepMounted: true, 
             }}
             sx={{
               display: { xs: "block", sm: "none" },
@@ -160,10 +160,6 @@ function Navbar(props) {
 }
 
 Navbar.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window: PropTypes.func,
 };
 
