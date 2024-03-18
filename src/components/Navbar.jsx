@@ -61,7 +61,10 @@ function Navbar(props) {
                 onClick={() => navigate("/pricetag")}
               />
             ) : (
-              <ListItemText primary={"HOME"} onClick={() => navigate("/")} />
+              <ListItemText
+                primary={"HOME"}
+                onClick={() => navigate("/computer_price_tag")}
+              />
             )}
           </ListItemButton>
         </ListItem>
@@ -112,7 +115,7 @@ function Navbar(props) {
                   <Button
                     key={"HOME"}
                     sx={{ color: "#fff" }}
-                    onClick={() => navigate("/")}
+                    onClick={() => navigate("/computer_price_tag")}
                   >
                     HOME
                   </Button>
