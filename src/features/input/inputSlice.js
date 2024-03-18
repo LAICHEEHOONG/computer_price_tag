@@ -62,7 +62,13 @@ export const inputSlice = createSlice({
       state.alertMessage = "";
     },
     rotatePriceTags: (state, action) => {
-      state.rotate = action.payload
+      let cal = state.rotate + 90;
+      if(cal > 360) {
+        state.rotate = 90;
+      } else {
+        state.rotate = cal;
+      }
+      // state.rotate = action.payload
     }
   },
 });

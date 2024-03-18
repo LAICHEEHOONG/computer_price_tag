@@ -16,8 +16,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import { useNavigate, useLocation } from "react-router-dom";
-import { rotatePriceTags } from "../features/input/inputSlice";
-import { useDispatch } from "react-redux";
+
 
 const drawerWidth = 240;
 
@@ -96,7 +95,7 @@ function Navbar(props) {
               component="div"
               sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
             >
-              <div className="desktop-navbar ">
+              <div className="desktop-navbar" style={{cursor: 'pointer'}} onClick={() => navigate("/computer_price_tag")}>
                 <LocalOfferIcon />
                 <div>PRICE TAG MAKER</div>
               </div>

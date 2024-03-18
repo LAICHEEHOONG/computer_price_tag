@@ -191,7 +191,7 @@
   flex-wrap: wrap;
   width: 400px;
   page-break-after: always;
-  z-index: 7;
+  /* z-index: 7; */
 }
 
 .all-width {
