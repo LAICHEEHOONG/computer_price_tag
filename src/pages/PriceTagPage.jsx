@@ -4,6 +4,7 @@ import PriceTagCore from "../components/PriceTagCore";
 
 const PriceTagPage = () => {
   const priceTags = useSelector((state) => state.input.priceTags);
+  const rotate = useSelector((state) => state.input.rotate);
   const [printArr, setPrintArr] = useState([]);
 
   useEffect(() => {
@@ -28,10 +29,11 @@ const PriceTagPage = () => {
 
   return (
     <div className="view-page-container">
+      <div className="price-tag-page-title"></div>
       {printArr.map((arr, index) => (
         <div className="price-tag-print-container all-width" key={index}>
           {arr.map((obj, i) => {
-            obj = { ...obj, degree: 90 };
+            obj = { ...obj, degree: rotate };
             return (
               <PriceTagCore key={`${index}-${i}-${obj.title}`} prop={obj} />
             );

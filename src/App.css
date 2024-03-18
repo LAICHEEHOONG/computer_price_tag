@@ -73,7 +73,7 @@
   font-size: 1.2rem;
   font-weight: bolder;
   height: 45px;
-  line-height: 2;
+  line-height: 1.9;
   padding: 5px;
 }
 
@@ -96,7 +96,7 @@
   align-items: center;
   font-weight: bold;
   gap: 2px;
-  padding: 10px;
+  padding: 8px;
   border: 1px solid black;
   border-top: none;
   border-left: none;
@@ -112,7 +112,7 @@
 }
 
 .bank-logo {
-  width: 45px;
+  width: 40px;
 }
 
 .ambank-logo {
@@ -125,7 +125,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: end;
-  padding: 10px;
+  /* padding: 8px; */
   font-size: 0.9rem;
   padding-right: 20px;
 }
@@ -154,7 +154,7 @@
 }
 
 .harga {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .price-tag-footer {
@@ -163,8 +163,8 @@
   align-items: center;
   border: 1px solid black;
   border-top: none;
-  font-size: 0.75rem;
-  padding: 10px;
+  font-size: 0.7rem;
+  padding: 5px;
 }
 
 .add-btn-container {
@@ -187,6 +187,7 @@
   flex-wrap: wrap;
   width: 400px;
   page-break-after: always;
+  z-index: 7;
 }
 
 .all-width {
@@ -210,7 +211,12 @@
   align-self: self-start;
 }
 
+.price-tag-page-title {
+  padding: 70px;
+}
+
 @media print {
+  .price-tag-page-title,
   .navbar-container,
   .alert-container {
     display: none !important;

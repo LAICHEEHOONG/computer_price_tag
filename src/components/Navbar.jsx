@@ -16,11 +16,13 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import { useNavigate, useLocation } from "react-router-dom";
-
+import { rotatePriceTags } from "../features/input/inputSlice";
+import { useDispatch } from "react-redux";
 
 const drawerWidth = 240;
 
 function Navbar(props) {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   let currentUrl = location.pathname;
@@ -33,7 +35,12 @@ function Navbar(props) {
   };
 
   const clickPrint = () => {
-    window.print();
+    dispatch(rotatePriceTags(90));
+    console.log("print");
+    // window.print();
+    setTimeout(() => {
+      dispatch(rotatePriceTags(0));
+    }, 3000);
   };
 
   const drawer = (

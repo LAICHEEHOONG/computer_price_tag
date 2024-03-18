@@ -9,6 +9,7 @@ const initialState = {
   alertMessage: "",
   priceTags: [],
   showNav: true,
+  rotate: 0
 };
 
 export const inputSlice = createSlice({
@@ -60,9 +61,9 @@ export const inputSlice = createSlice({
       state.alert = false;
       state.alertMessage = "";
     },
-    // hiddenNav: (state, action) => {
-    //   state.showNav = action.payload;
-    // },
+    rotatePriceTags: (state, action) => {
+      state.rotate = action.payload
+    }
   },
 });
 
@@ -76,7 +77,7 @@ export const {
   openAlert,
   setAlertMessage,
   addPriceTag,
-  // hiddenNav,
+  rotatePriceTags,
 } = inputSlice.actions;
 
 export default inputSlice.reducer;
