@@ -4,9 +4,18 @@ import Cimb from "../assets/cimb.png";
 import Pb from "../assets/pb.png";
 import Maybank from "../assets/maybank.png";
 import { formatNumber } from "../utils/tool";
+import { useNavigate, useLocation } from "react-router-dom";
+import Fab from "@mui/material/Fab";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { useDispatch } from "react-redux";
+import { deleteOne } from "../features/input/inputSlice";
 
 const PriceTagCore = ({ prop }) => {
-  const { title, specJsx, price, degree } = prop;
+  const dispatch = useDispatch();
+  const location = useLocation();
+  let repoName = location.pathname;
+  const { title, specJsx, price, degree, id, fn } = prop;
   const productTitle = () => {
     if (title.length > 31) {
       return title.substring(0, 31) + "...";
@@ -65,6 +74,26 @@ const PriceTagCore = ({ prop }) => {
       <div className="price-tag-footer">
         * Untuk pertanyaan lebih lanjut, sila rujuk kepada crew kami.
       </div>
+      {repoName === "/" ||
+      repoName === "/computer_price_tag/" ||
+      repoName === "/computer_price_tag" ? (
+        <></>
+      ) : (
+        <div className="overlay-square">
+          <Fab color="primary">
+            <EditIcon />
+          </Fab>
+
+          <Fab
+            color="secondary"
+            onClick={() => {
+              dispatch(deleteOne(id));
+            }}
+          >
+            <DeleteIcon />
+          </Fab>
+        </div>
+      )}
     </div>
   );
 };

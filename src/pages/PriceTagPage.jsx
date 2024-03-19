@@ -6,7 +6,11 @@ import Stack from "@mui/material/Stack";
 import PrintIcon from "@mui/icons-material/Print";
 import ReactToPrint from "react-to-print";
 import { IconButton } from "@mui/material";
-import { rotatePriceTags } from "../features/input/inputSlice";
+import {
+  deleteOne,
+  rotatePriceTags,
+  setPrintArr_,
+} from "../features/input/inputSlice";
 import { useDispatch } from "react-redux";
 import Rotate90DegreesCwIcon from "@mui/icons-material/Rotate90DegreesCw";
 import PriceTagNotCreatedPage from "../components/PriceTagNotCreated";
@@ -14,6 +18,7 @@ import PriceTagNotCreatedPage from "../components/PriceTagNotCreated";
 const PriceTagPage = React.forwardRef((props, ref) => {
   const componentRef = useRef();
   const dispatch = useDispatch();
+  const printArr_ = useSelector(state => state.input.printArr)
   const priceTags = useSelector((state) => state.input.priceTags);
   const rotate = useSelector((state) => state.input.rotate);
   const [printArr, setPrintArr] = useState([]);
@@ -43,50 +48,58 @@ const PriceTagPage = React.forwardRef((props, ref) => {
         arr2.push(arr);
         setPrintArr((preState) => [...preState, ...arr2]);
       }
+      // dispatch(setPrintArr())
     });
   }, [priceTags]);
+
+  useEffect(() => {
+    console.log('setPrintArr')
+    dispatch(setPrintArr_())
+  }, [priceTags, dispatch]);
+
+
 
   return (
     <div className="view-page-container">
       <div className="price-tag-print-title">
-      {priceTags.length === 0 ? (
-        <div style={{ marginTop: "100px" }}>
-          <PriceTagNotCreatedPage />
-        </div>
-      ) : (
-        <div className="price-tag-page-title">
-          <Stack direction="row" spacing={1}>
-            <Chip
-              color="primary"
-              variant="outlined"
-              label={priceTagPageTitle()}
-              sx={{
-                fontSize: "1.25rem",
-                padding: "20px",
+        {priceTags.length === 0 ? (
+          <div style={{ marginTop: "100px" }}>
+            <PriceTagNotCreatedPage />
+          </div>
+        ) : (
+          <div className="price-tag-page-title">
+            <Stack direction="row" spacing={1}>
+              <Chip
+                color="primary"
+                variant="outlined"
+                label={priceTagPageTitle()}
+                sx={{
+                  fontSize: "1.25rem",
+                  padding: "20px",
+                }}
+              />
+            </Stack>
+            <ReactToPrint
+              trigger={() => {
+                return (
+                  <IconButton style={{ marginLeft: "10px" }}>
+                    <PrintIcon style={{ fontSize: "50px" }} />
+                  </IconButton>
+                );
+              }}
+              content={() => {
+                return componentRef.current;
               }}
             />
-          </Stack>
-          <ReactToPrint
-            trigger={() => {
-              return (
-                <IconButton style={{ marginLeft: "10px" }}>
-                  <PrintIcon style={{ fontSize: "50px" }} />
-                </IconButton>
-              );
-            }}
-            content={() => {
-              return componentRef.current;
-            }}
-          />
-          <IconButton
-            onClick={() => {
-              dispatch(rotatePriceTags());
-            }}
-          >
-            <Rotate90DegreesCwIcon style={{ fontSize: "50px" }} />
-          </IconButton>
-        </div>
-      )}
+            <IconButton
+              onClick={() => {
+                dispatch(rotatePriceTags());
+              }}
+            >
+              <Rotate90DegreesCwIcon style={{ fontSize: "50px" }} />
+            </IconButton>
+          </div>
+        )}
       </div>
 
       <div>
@@ -99,7 +112,22 @@ const PriceTagPage = React.forwardRef((props, ref) => {
             alignItems: "center",
           }}
         >
-          {printArr.map((arr, index) => (
+          {/* {printArr.map((arr, index) => (
+            <div
+              className="price-tag-print-container all-width"
+              style={{ marginTop: "42.67px" }}
+              key={index}
+            >
+              {arr.map((obj, i) => {
+                obj = { ...obj, degree: rotate };
+                return (
+                  <PriceTagCore key={`${index}-${i}-${obj.title}`} prop={obj} />
+                );
+              })}
+            </div>
+          ))} */}
+
+{printArr_.map((arr, index) => (
             <div
               className="price-tag-print-container all-width"
               style={{ marginTop: "42.67px" }}

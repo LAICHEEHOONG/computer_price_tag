@@ -10,12 +10,37 @@ const initialState = {
   priceTags: [],
   showNav: true,
   rotate: 0,
+  printArr: [],
 };
 
 export const inputSlice = createSlice({
   name: "input",
   initialState,
   reducers: {
+    setPrintArr_: (state, action) => {
+      let arr = [];
+      let arr2 = [];
+  
+      state.priceTags.forEach((obj, i) => {
+        if (arr.length < 2) {
+          arr.push(obj);
+        } else if (arr.length >= 2) {
+          arr2.push(arr);
+          arr = [];
+          arr.push(obj);
+        }
+  
+        if (i === state.priceTags.length - 1) {
+          arr2.push(arr);
+          state.printArr = [...arr2]
+        }
+      });
+    },
+    deleteOne: (state, action) => {
+      state.priceTags = state.priceTags.filter(
+        (tag) => tag.id !== action.payload
+      );
+    },
     updateLastIndex: (state, action) => {
       state.specLastIndex = state.specJsx.length - 1;
     },
@@ -51,6 +76,7 @@ export const inputSlice = createSlice({
         specJsx: state.specJsx,
         title: state.title,
         price: state.price,
+        id: new Date().getTime(),
       };
 
       state.priceTags = [...state.priceTags, obj];
@@ -63,13 +89,12 @@ export const inputSlice = createSlice({
     },
     rotatePriceTags: (state, action) => {
       let cal = state.rotate + 90;
-      if(cal > 360) {
+      if (cal > 360) {
         state.rotate = 90;
       } else {
         state.rotate = cal;
       }
-      // state.rotate = action.payload
-    }
+    },
   },
 });
 
@@ -84,6 +109,8 @@ export const {
   setAlertMessage,
   addPriceTag,
   rotatePriceTags,
+  deleteOne,
+  setPrintArr_
 } = inputSlice.actions;
 
 export default inputSlice.reducer;
