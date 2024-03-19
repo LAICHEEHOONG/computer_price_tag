@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/computer_price_tag/static/css/main.a6783a00.css",
-    "main.js": "/computer_price_tag/static/js/main.71129788.js",
+    "main.css": "/computer_price_tag/static/css/main.a1bdfc4a.css",
+    "main.js": "/computer_price_tag/static/js/main.77b97059.js",
     "static/media/cimb.png": "/computer_price_tag/static/media/cimb.feeb41d8474449e162d9.png",
     "static/media/roboto-latin-500-normal.woff2": "/computer_price_tag/static/media/roboto-latin-500-normal.f25d774ecfe0996f8eb5.woff2",
     "static/media/roboto-latin-700-normal.woff2": "/computer_price_tag/static/media/roboto-latin-700-normal.227c93190fe7f82de3f8.woff2",
@@ -62,11 +62,11 @@
     "static/media/roboto-greek-ext-400-normal.woff": "/computer_price_tag/static/media/roboto-greek-ext-400-normal.f708607d2a7290fb8bfa.woff",
     "static/media/roboto-greek-ext-700-normal.woff": "/computer_price_tag/static/media/roboto-greek-ext-700-normal.249853776d22a271b2b5.woff",
     "index.html": "/computer_price_tag/index.html",
-    "main.a6783a00.css.map": "/computer_price_tag/static/css/main.a6783a00.css.map",
-    "main.71129788.js.map": "/computer_price_tag/static/js/main.71129788.js.map"
+    "main.a1bdfc4a.css.map": "/computer_price_tag/static/css/main.a1bdfc4a.css.map",
+    "main.77b97059.js.map": "/computer_price_tag/static/js/main.77b97059.js.map"
   },
   "entrypoints": [
-    "static/css/main.a6783a00.css",
-    "static/js/main.71129788.js"
+    "static/css/main.a1bdfc4a.css",
+    "static/js/main.77b97059.js"
   ]
 }
