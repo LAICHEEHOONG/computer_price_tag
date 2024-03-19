@@ -30,8 +30,7 @@ const InputField = () => {
       dispatch(titleChange(value));
     },
     priceChange: (value) => {
-      let toNumber = Number(value);
-
+      let toNumber = value;
       if (isNaN(toNumber)) {
         toNumber = 0;
         handle.alert("Price field only accepts numbers.");

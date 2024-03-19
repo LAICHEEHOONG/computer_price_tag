@@ -3,6 +3,8 @@ import Ambank from "../assets/ambank.png";
 import Cimb from "../assets/cimb.png";
 import Pb from "../assets/pb.png";
 import Maybank from "../assets/maybank.png";
+import { formatNumber } from "../utils/tool";
+// import { formatNumber } from "../../utils/tool";
 
 const PriceTagCore = ({ prop }) => {
   const { title, specJsx, price, degree } = prop;
@@ -13,6 +15,9 @@ const PriceTagCore = ({ prop }) => {
       return title;
     }
   };
+
+  // formatNumber(100);
+
   return (
     <div
       className="price-tag-container all-width"
@@ -57,7 +62,8 @@ const PriceTagCore = ({ prop }) => {
           </div>
           <div className="bulan">x 12 bulan</div>
           <div className="harga">Harga</div>
-          <div className="selling-price">{`RM ${price.toLocaleString()}`}</div>
+          {/* <div className="selling-price">{`RM ${price.toLocaleString()}`}</div> */}
+          <div className="selling-price">{`RM ${formatNumber(price)}`}</div>
         </div>
       </div>
       <div className="price-tag-footer">
