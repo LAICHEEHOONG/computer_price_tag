@@ -4,6 +4,7 @@ import PriceTagPage from "./pages/PriceTagPage";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import AlertSnackbar from "./components/AlertSnackbar";
+import EditPriceTagDialog from "./components/Dialog";
 
 function App() {
   return (
@@ -11,6 +12,9 @@ function App() {
       <Navbar />
       <div className="alert-container">
         <AlertSnackbar />
+      </div>
+      <div>
+        <EditPriceTagDialog />
       </div>
 
       <Routes>

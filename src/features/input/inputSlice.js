@@ -11,34 +11,50 @@ const initialState = {
   showNav: true,
   rotate: 0,
   printArr: [],
+  dialog: { open: false, id: "", targetPriceTag: {} },
 };
 
 export const inputSlice = createSlice({
   name: "input",
   initialState,
   reducers: {
-    setPrintArr_: (state, action) => {
+    setDialog: (state, action) => {
+      const { open, id } = action.payload;
+      state.dialog.open = open;
+      if (action.payload.id) {
+        state.dialog.id = id;
+        state.dialog.targetPriceTag = state.priceTags.find(obj => obj.id === id)
+      }
+    },
+    setPrintArr: (state, action) => {
+      if (state.priceTags.length === 0) {
+        state.printArr = [];
+        return;
+      }
       let arr = [];
       let arr2 = [];
-  
+
       state.priceTags.forEach((obj, i) => {
         if (arr.length < 2) {
           arr.push(obj);
-        } else if (arr.length >= 2) {
+        } else if (arr.length === 2) {
           arr2.push(arr);
           arr = [];
           arr.push(obj);
         }
-  
+
         if (i === state.priceTags.length - 1) {
-          arr2.push(arr);
-          state.printArr = [...arr2]
+          if (arr.length > 0) {
+            arr2.push(arr);
+          }
+
+          state.printArr = [...arr2];
         }
       });
     },
     deleteOne: (state, action) => {
       state.priceTags = state.priceTags.filter(
-        (tag) => tag.id !== action.payload
+        (obj) => obj.id !== action.payload
       );
     },
     updateLastIndex: (state, action) => {
@@ -110,7 +126,8 @@ export const {
   addPriceTag,
   rotatePriceTags,
   deleteOne,
-  setPrintArr_
+  setPrintArr,
+  setDialog,
 } = inputSlice.actions;
 
 export default inputSlice.reducer;

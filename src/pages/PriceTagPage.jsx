@@ -6,69 +6,67 @@ import Stack from "@mui/material/Stack";
 import PrintIcon from "@mui/icons-material/Print";
 import ReactToPrint from "react-to-print";
 import { IconButton } from "@mui/material";
-import {
-  deleteOne,
-  rotatePriceTags,
-  setPrintArr_,
-} from "../features/input/inputSlice";
+import { rotatePriceTags, setPrintArr } from "../features/input/inputSlice";
 import { useDispatch } from "react-redux";
 import Rotate90DegreesCwIcon from "@mui/icons-material/Rotate90DegreesCw";
 import PriceTagNotCreatedPage from "../components/PriceTagNotCreated";
+import Fab from "@mui/material/Fab";
 
 const PriceTagPage = React.forwardRef((props, ref) => {
   const componentRef = useRef();
   const dispatch = useDispatch();
-  const printArr_ = useSelector(state => state.input.printArr)
+  const printArr_ = useSelector((state) => state.input.printArr);
   const priceTags = useSelector((state) => state.input.priceTags);
   const rotate = useSelector((state) => state.input.rotate);
-  const [printArr, setPrintArr] = useState([]);
+  // const [printArr, setPrintArr] = useState([]);
 
   const priceTagPageTitle = () => {
     if (priceTags.length === 0) {
       return "Price Tag Not Created";
     } else {
-      return `${priceTags.length} Price Tags Created`;
+      return `Print ${priceTags.length} Price Tags`;
     }
   };
 
+  // useEffect(() => {
+  //   let arr = [];
+  //   let arr2 = [];
+
+  //   priceTags.forEach((obj, i) => {
+  //     if (arr.length < 2) {
+  //       arr.push(obj);
+  //     } else if (arr.length >= 2) {
+  //       arr2.push(arr);
+  //       arr = [];
+  //       arr.push(obj);
+  //     }
+
+  //     if (i === priceTags.length - 1) {
+  //       arr2.push(arr);
+  //       setPrintArr((preState) => [...preState, ...arr2]);
+  //     }
+  //     // dispatch(setPrintArr())
+  //   });
+  // }, [priceTags]);
+
   useEffect(() => {
-    let arr = [];
-    let arr2 = [];
-
-    priceTags.forEach((obj, i) => {
-      if (arr.length < 2) {
-        arr.push(obj);
-      } else if (arr.length >= 2) {
-        arr2.push(arr);
-        arr = [];
-        arr.push(obj);
-      }
-
-      if (i === priceTags.length - 1) {
-        arr2.push(arr);
-        setPrintArr((preState) => [...preState, ...arr2]);
-      }
-      // dispatch(setPrintArr())
-    });
-  }, [priceTags]);
-
-  useEffect(() => {
-    console.log('setPrintArr')
-    dispatch(setPrintArr_())
+    dispatch(setPrintArr());
   }, [priceTags, dispatch]);
-
-
 
   return (
     <div className="view-page-container">
       <div className="price-tag-print-title">
         {priceTags.length === 0 ? (
-          <div style={{ marginTop: "100px" }}>
+          <div style={{ marginTop: "100px", marginLeft: '-80px' }}>
             <PriceTagNotCreatedPage />
           </div>
         ) : (
           <div className="price-tag-page-title">
-            <Stack direction="row" spacing={1}>
+            {/* <Fab variant="extended" >
+              <PrintIcon sx={{ mr: 1 }} />
+              {priceTagPageTitle()}
+            </Fab> */}
+            {/* <Stack direction="row" spacing={1}>
               <Chip
                 color="primary"
                 variant="outlined"
@@ -78,26 +76,38 @@ const PriceTagPage = React.forwardRef((props, ref) => {
                   padding: "20px",
                 }}
               />
-            </Stack>
+            </Stack> */}
+                        <Fab
+              onClick={() => {
+                dispatch(rotatePriceTags());
+              }}
+            >
+              <Rotate90DegreesCwIcon />
+            </Fab>
             <ReactToPrint
               trigger={() => {
                 return (
-                  <IconButton style={{ marginLeft: "10px" }}>
-                    <PrintIcon style={{ fontSize: "50px" }} />
-                  </IconButton>
+                  <Fab variant="extended">
+                    <PrintIcon sx={{ mr: 1 }} />
+                    {priceTagPageTitle()}
+                  </Fab>
+                  // <IconButton style={{ marginLeft: "10px" }}>
+                  //   <PrintIcon style={{ fontSize: "50px" }} />
+                  // </IconButton>
                 );
               }}
               content={() => {
                 return componentRef.current;
               }}
             />
-            <IconButton
+
+            {/* <IconButton
               onClick={() => {
                 dispatch(rotatePriceTags());
               }}
             >
               <Rotate90DegreesCwIcon style={{ fontSize: "50px" }} />
-            </IconButton>
+            </IconButton> */}
           </div>
         )}
       </div>
@@ -127,7 +137,7 @@ const PriceTagPage = React.forwardRef((props, ref) => {
             </div>
           ))} */}
 
-{printArr_.map((arr, index) => (
+          {printArr_.map((arr, index) => (
             <div
               className="price-tag-print-container all-width"
               style={{ marginTop: "42.67px" }}

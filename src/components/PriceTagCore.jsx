@@ -8,14 +8,15 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Fab from "@mui/material/Fab";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useDispatch } from "react-redux";
-import { deleteOne } from "../features/input/inputSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteOne, setDialog } from "../features/input/inputSlice";
 
 const PriceTagCore = ({ prop }) => {
+  const dialog = useSelector(state => state.input.dialog)
   const dispatch = useDispatch();
   const location = useLocation();
   let repoName = location.pathname;
-  const { title, specJsx, price, degree, id, fn } = prop;
+  const { title, specJsx, price, degree, id } = prop;
   const productTitle = () => {
     if (title.length > 31) {
       return title.substring(0, 31) + "...";
@@ -76,11 +77,13 @@ const PriceTagCore = ({ prop }) => {
       </div>
       {repoName === "/" ||
       repoName === "/computer_price_tag/" ||
-      repoName === "/computer_price_tag" ? (
+      repoName === "/computer_price_tag" || dialog.open ? (
         <></>
       ) : (
         <div className="overlay-square">
-          <Fab color="primary">
+          <Fab color="primary" onClick={() => {
+            dispatch(setDialog({open: true, id: id}))
+          }}>
             <EditIcon />
           </Fab>
 
