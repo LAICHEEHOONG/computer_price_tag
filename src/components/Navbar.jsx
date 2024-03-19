@@ -20,15 +20,13 @@ import { useNavigate, useLocation } from "react-router-dom";
 const drawerWidth = 240;
 
 function Navbar(props) {
-
   const navigate = useNavigate();
   const location = useLocation();
-  let currentUrl = location.pathname;
-  const repoName = "/computer_price_tag";
-  const isHomeOrComputerPriceTag =
-    currentUrl === "/" ||
-    currentUrl === `${repoName}/` ||
-    currentUrl === `${repoName}/computer_price_tag`;
+  let repoName = location.pathname;
+
+  useEffect(() => {
+    console.log("deploy");
+  }, [repoName]);
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -36,10 +34,6 @@ function Navbar(props) {
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-
-  useEffect(() => {
-    console.log(currentUrl);
-  }, []);
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
@@ -53,15 +47,18 @@ function Navbar(props) {
       <List>
         <ListItem disablePadding>
           <ListItemButton component="button" sx={{ textAlign: "center" }}>
-            {isHomeOrComputerPriceTag ? (
+            {repoName === "/" ||
+            repoName === "/computer_price_tag/" ||
+            repoName === "/computer_price_tag" ? (
               <ListItemText
                 primary={"VIEW"}
-                onClick={() => navigate(`${repoName}/pricetag`)}
+                // onClick={() => navigate(`${repoName}/pricetag`)}
+                onClick={() => navigate("/computer_price_tag/pricetag")}
               />
             ) : (
               <ListItemText
                 primary={"HOME"}
-                onClick={() => navigate(`${repoName}/computer_price_tag`)}
+                onClick={() => navigate("/computer_price_tag")}
               />
             )}
           </ListItemButton>
@@ -104,31 +101,24 @@ function Navbar(props) {
               </div>
             </Typography>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
-              {currentUrl === "/" || currentUrl === "/computer_price_tag" ? (
+              {repoName === "/" ||
+              repoName === "/computer_price_tag/" ||
+              repoName === "/computer_price_tag" ? (
                 <Button
                   key={"VIEW"}
                   sx={{ color: "#fff" }}
-                  onClick={() => navigate("/pricetag")}
+                  onClick={() => navigate("/computer_price_tag/pricetag")}
                 >
                   VIEW
                 </Button>
               ) : (
-                <>
-                  <Button
-                    key={"HOME"}
-                    sx={{ color: "#fff" }}
-                    onClick={() => navigate("/computer_price_tag")}
-                  >
-                    HOME
-                  </Button>
-                  {/* <Button
-                    key={"PRINT"}
-                    sx={{ color: "#fff" }}
-                    onClick={() => clickPrint()}
-                  >
-                    PRINT
-                  </Button> */}
-                </>
+                <Button
+                  key={"HOME"}
+                  sx={{ color: "#fff" }}
+                  onClick={() => navigate("/computer_price_tag")}
+                >
+                  HOME
+                </Button>
               )}
             </Box>
           </Toolbar>

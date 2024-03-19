@@ -1,5 +1,4 @@
 import InputField from "../components/InputField";
-// import PriceTag from "../components/PriceTag";
 import { useSelector } from "react-redux";
 import PriceTagCore from "../components/PriceTagCore";
 
