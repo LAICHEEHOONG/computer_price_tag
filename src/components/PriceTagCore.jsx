@@ -18,7 +18,7 @@ const PriceTagCore = ({ prop }) => {
       className="price-tag-container all-width"
       style={{ transform: `rotate(${degree}deg)` }}
     >
-      <div className="price-tag-head">
+      <div>
         <img className="all-width" src={Logo} alt="Logo" />
       </div>
       <div className="price-tag-title">{productTitle()}</div>

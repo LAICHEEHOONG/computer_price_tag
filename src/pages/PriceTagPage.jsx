@@ -48,6 +48,7 @@ const PriceTagPage = React.forwardRef((props, ref) => {
 
   return (
     <div className="view-page-container">
+      <div className="price-tag-print-title">
       {priceTags.length === 0 ? (
         <div style={{ marginTop: "100px" }}>
           <PriceTagNotCreatedPage />
@@ -86,6 +87,7 @@ const PriceTagPage = React.forwardRef((props, ref) => {
           </IconButton>
         </div>
       )}
+      </div>
 
       <div>
         <div

@@ -5,7 +5,7 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { useSelector, useDispatch } from "react-redux";
 import { openAlert } from "../features/input/inputSlice";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function AlertSnackbar() {
   const open = useSelector((state) => state.input.alert);
@@ -53,7 +53,7 @@ export default function AlertSnackbar() {
     <div>
       <Snackbar
         open={open}
-        autoHideDuration={6000}
+        autoHideDuration={2000}
         onClose={handleClose}
         message={message}
         action={action}
