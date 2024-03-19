@@ -52,7 +52,6 @@ function Navbar(props) {
             repoName === "/computer_price_tag" ? (
               <ListItemText
                 primary={"VIEW"}
-                // onClick={() => navigate(`${repoName}/pricetag`)}
                 onClick={() => navigate("/computer_price_tag/pricetag")}
               />
             ) : (
