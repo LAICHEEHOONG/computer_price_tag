@@ -18,12 +18,59 @@ export const inputSlice = createSlice({
   name: "input",
   initialState,
   reducers: {
+    editPriceTagSpecsChange: (state, action) => {
+      const { id, _id, value } = action.payload; // id is priceTag id, _id is specJsx obj id
+      const index = state.priceTags.findIndex((obj) => obj.id === id);
+      state.priceTags[index].specJsx[_id].value = value;
+    },
+    editPriceTagRemoveSpecField: (state, action) => {
+      const { id, _id } = action.payload; // id is priceTag id, _id is specJsx obj id
+      const index = state.priceTags.findIndex((obj) => obj.id === id);
+      let removeSpecJsx = state.priceTags[index].specJsx.filter(
+        (obj) => obj.id !== _id
+      );
+      state.priceTags[index].specJsx = removeSpecJsx;
+    },
+    editPriceTagAddSpecField: (state, action) => {
+      const { id } = action.payload;
+      const index = state.priceTags.findIndex((obj) => obj.id === id);
+
+      if (index !== -1) {
+        let newId =
+          state.priceTags[index].specJsx[
+            state.priceTags[index].specJsx.length - 1
+          ].id + 1;
+        state.priceTags[index].specJsx = [
+          ...state.priceTags[index].specJsx,
+          { id: newId, value: "" },
+        ];
+        console.log("Object updated successfully.");
+      } else {
+        console.log("Object with ID " + id + " not found.");
+      }
+    },
+    editPriceTag: (state, action) => {
+      const { id, key, value } = action.payload;
+      const index = state.priceTags.findIndex((obj) => obj.id === id);
+      if (index !== -1) {
+        // Update the data of the object
+        state.priceTags[index][key] = value;
+        console.log("Object updated successfully.");
+      } else {
+        console.log("Object with ID " + id + " not found.");
+      }
+    },
+    removeAll: (state) => {
+      state.priceTags = [];
+    },
     setDialog: (state, action) => {
       const { open, id } = action.payload;
       state.dialog.open = open;
       if (action.payload.id) {
         state.dialog.id = id;
-        state.dialog.targetPriceTag = state.priceTags.find(obj => obj.id === id)
+        state.dialog.targetPriceTag = state.priceTags.find(
+          (obj) => obj.id === id
+        );
       }
     },
     setPrintArr: (state, action) => {
@@ -128,6 +175,11 @@ export const {
   deleteOne,
   setPrintArr,
   setDialog,
+  removeAll,
+  editPriceTag,
+  editPriceTagAddSpecField,
+  editPriceTagRemoveSpecField,
+  editPriceTagSpecsChange
 } = inputSlice.actions;
 
 export default inputSlice.reducer;
