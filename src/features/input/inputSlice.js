@@ -44,7 +44,6 @@ export const inputSlice = createSlice({
           ...state.priceTags[index].specJsx,
           { id: newId, value: "" },
         ];
-        console.log("Object updated successfully.");
       } else {
         console.log("Object with ID " + id + " not found.");
       }
@@ -53,9 +52,7 @@ export const inputSlice = createSlice({
       const { id, key, value } = action.payload;
       const index = state.priceTags.findIndex((obj) => obj.id === id);
       if (index !== -1) {
-        // Update the data of the object
         state.priceTags[index][key] = value;
-        console.log("Object updated successfully.");
       } else {
         console.log("Object with ID " + id + " not found.");
       }

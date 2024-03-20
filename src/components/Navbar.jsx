@@ -16,6 +16,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import { useNavigate, useLocation } from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
 
 const drawerWidth = 240;
 
@@ -25,7 +26,7 @@ function Navbar(props) {
   let repoName = location.pathname;
 
   useEffect(() => {
-    console.log("deploy 3");
+    console.log("deploy 4");
   }, [repoName]);
 
   const { window } = props;
@@ -107,6 +108,7 @@ function Navbar(props) {
                   key={"VIEW"}
                   sx={{ color: "#fff" }}
                   onClick={() => navigate("/computer_price_tag/pricetag")}
+                  startIcon={<LocalOfferIcon />} // Icon on the left of the text
                 >
                   VIEW
                 </Button>
@@ -115,6 +117,7 @@ function Navbar(props) {
                   key={"HOME"}
                   sx={{ color: "#fff" }}
                   onClick={() => navigate("/computer_price_tag")}
+                  startIcon={<HomeIcon />} // Icon on the left of the text
                 >
                   HOME
                 </Button>

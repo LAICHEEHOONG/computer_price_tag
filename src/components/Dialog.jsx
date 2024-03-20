@@ -2,9 +2,6 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 import PriceTagCore from "./PriceTagCore";
 import { useDispatch, useSelector } from "react-redux";
 import { setDialog } from "../features/input/inputSlice";
@@ -13,19 +10,19 @@ import EditField from "./EditField";
 export default function EditPriceTagDialog() {
   const dispatch = useDispatch();
   const dialog = useSelector((state) => state.input.dialog);
-  const priceTags = useSelector(state => state.input.priceTags);
+  const priceTags = useSelector((state) => state.input.priceTags);
 
   const selectedPriceTags = (id) => {
-    let result = priceTags.find(obj => obj.id === id);
+    let result = priceTags.find((obj) => obj.id === id);
     return result;
-  }
+  };
 
   const handleClickOpen = () => {
-    dispatch(setDialog({open: true}));
+    dispatch(setDialog({ open: true }));
   };
 
   const handleClose = () => {
-    dispatch(setDialog({open: false}));
+    dispatch(setDialog({ open: false }));
   };
 
   return (
@@ -44,14 +41,12 @@ export default function EditPriceTagDialog() {
           },
         }}
       >
-        {/* here */}
         <div className="dialog-container">
           <div>
             <EditField state={dialog.targetPriceTag} />
           </div>
           <div>
-          {/* <PriceTagCore prop={dialog.targetPriceTag} /> */}
-          <PriceTagCore prop={selectedPriceTags(dialog.targetPriceTag.id)} />
+            <PriceTagCore prop={selectedPriceTags(dialog.targetPriceTag.id)} />
           </div>
         </div>
         <DialogActions>

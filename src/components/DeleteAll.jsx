@@ -1,12 +1,11 @@
 import * as React from "react";
 import Popover from "@mui/material/Popover";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Fab from "@mui/material/Fab";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
-import { UseDispatch, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { removeAll } from "../features/input/inputSlice";
 
 export default function DeleteAll() {
@@ -29,9 +28,6 @@ export default function DeleteAll() {
       <Fab color="warning" aria-describedby={id} onClick={handleClick}>
         <DeleteIcon />
       </Fab>
-      {/* <Button aria-describedby={id} variant="contained" onClick={handleClick}>
-        Open Popover
-      </Button> */}
       <Popover
         id={id}
         open={open}

@@ -23,7 +23,6 @@ function App() {
         <Route path="/pricetag" element={<PriceTagPage />} />
         <Route path="/computer_price_tag/pricetag" element={<PriceTagPage />} />
         <Route path="/computer_price_tag/*" element={<HomePage />} />
-        {/* <Route path="/*" element={<HomePage />} /> */}
       </Routes>
     </div>
   );

@@ -4,7 +4,7 @@ import Cimb from "../assets/cimb.png";
 import Pb from "../assets/pb.png";
 import Maybank from "../assets/maybank.png";
 import { formatNumber } from "../utils/tool";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Fab from "@mui/material/Fab";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteOne, setDialog } from "../features/input/inputSlice";
 
 const PriceTagCore = ({ prop }) => {
-  const dialog = useSelector(state => state.input.dialog)
+  const dialog = useSelector((state) => state.input.dialog);
   const dispatch = useDispatch();
   const location = useLocation();
   let repoName = location.pathname;
@@ -77,13 +77,17 @@ const PriceTagCore = ({ prop }) => {
       </div>
       {repoName === "/" ||
       repoName === "/computer_price_tag/" ||
-      repoName === "/computer_price_tag" || dialog.open ? (
+      repoName === "/computer_price_tag" ||
+      dialog.open ? (
         <></>
       ) : (
         <div className="overlay-square">
-          <Fab color="primary" onClick={() => {
-            dispatch(setDialog({open: true, id: id}))
-          }}>
+          <Fab
+            color="primary"
+            onClick={() => {
+              dispatch(setDialog({ open: true, id: id }));
+            }}
+          >
             <EditIcon />
           </Fab>
 

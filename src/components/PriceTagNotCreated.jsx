@@ -19,13 +19,6 @@ export default function PriceTagNotCreatedPage() {
           Sorry, the price tag you requested has not been created yet. Please go
           to the home page to create it.
         </Alert>
-        {/* <Typography variant="h4" component="div">
-            Price Tag Not Created
-          </Typography>
-          <Typography sx={{ mb: 1, fontSize: "1.2rem" }} color="text.secondary">
-            Sorry, the price tag you requested has not been created yet. Please
-            go to the home page to create it.
-          </Typography> */}
       </CardContent>
       <CardActions>
         <Button size="small" onClick={() => navigate("/computer_price_tag")}>

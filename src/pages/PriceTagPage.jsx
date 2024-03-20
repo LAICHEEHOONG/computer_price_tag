@@ -9,21 +9,24 @@ import Rotate90DegreesCwIcon from "@mui/icons-material/Rotate90DegreesCw";
 import PriceTagNotCreatedPage from "../components/PriceTagNotCreated";
 import Fab from "@mui/material/Fab";
 import DeleteAll from "../components/DeleteAll";
+import AddIcon from "@mui/icons-material/Add";
+import { useNavigate } from "react-router-dom";
 
 const PriceTagPage = React.forwardRef((props, ref) => {
+  let navigate = useNavigate();
   const componentRef = useRef();
   const dispatch = useDispatch();
   const printArr = useSelector((state) => state.input.printArr);
   const priceTags = useSelector((state) => state.input.priceTags);
   const rotate = useSelector((state) => state.input.rotate);
 
-  const priceTagPageTitle = () => {
-    if (priceTags.length === 0) {
-      return "Price Tag Not Created";
-    } else {
-      return `Print ${priceTags.length} Price Tags`;
-    }
-  };
+  // const priceTagPageTitle = () => {
+  //   if (priceTags.length === 0) {
+  //     return "Price Tag Not Created";
+  //   } else {
+  //     return `Print ${priceTags.length} Price Tags`;
+  //   }
+  // };
 
   useEffect(() => {
     dispatch(setPrintArr());
@@ -38,6 +41,7 @@ const PriceTagPage = React.forwardRef((props, ref) => {
           </div>
         ) : (
           <div className="price-tag-page-title">
+            <DeleteAll />
             <Fab
               onClick={() => {
                 dispatch(rotatePriceTags());
@@ -45,13 +49,16 @@ const PriceTagPage = React.forwardRef((props, ref) => {
             >
               <Rotate90DegreesCwIcon />
             </Fab>
-            <DeleteAll />
+            <Fab onClick={() => navigate("/computer_price_tag")}>
+              <AddIcon />
+            </Fab>
+
             <ReactToPrint
               trigger={() => {
                 return (
                   <Fab variant="extended">
                     <PrintIcon sx={{ mr: 1 }} />
-                    {priceTagPageTitle()}
+                    {"print"}
                   </Fab>
                 );
               }}
