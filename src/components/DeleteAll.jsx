@@ -50,7 +50,7 @@ export default function DeleteAll() {
               display: "flex",
               justifyContent: "flex-end",
               alignItems: "center",
-              padding: "10px",
+              paddingBottom: "10px",
               gap: "10px",
             }}
           >
