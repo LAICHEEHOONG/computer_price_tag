@@ -21,7 +21,13 @@ export default function PriceTagNotCreatedPage() {
         </Alert>
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={() => navigate("/computer_price_tag")}>
+        <Button
+          size="small"
+          onClick={() => {
+            // navigate("/computer_price_tag")
+            navigate("/");
+          }}
+        >
           Create Price Tag
         </Button>
       </CardActions>

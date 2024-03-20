@@ -26,8 +26,8 @@ function Navbar(props) {
   let repoName = location.pathname;
 
   useEffect(() => {
-    console.log("deploy 4");
-  }, [repoName]);
+    console.log("deploy redux persist");
+  }, []);
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -39,7 +39,11 @@ function Navbar(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        <div className="navbar-header">
+        <div
+          className="navbar-header"
+          style={{ cursor: "pointer" }}
+          onClick={() => navigate("/")}
+        >
           <LocalOfferIcon />
           <div>PRICE TAG MAKER</div>
         </div>
@@ -48,23 +52,18 @@ function Navbar(props) {
       <List>
         <ListItem disablePadding>
           <ListItemButton component="button" sx={{ textAlign: "center" }}>
-            {repoName === "/" ||
-            repoName === "/computer_price_tag/" ||
-            repoName === "/computer_price_tag" ? (
+            {repoName === "/" && (
               <ListItemText
                 primary={"VIEW"}
-                onClick={() => navigate("/computer_price_tag/pricetag")}
+                onClick={() => navigate("/pricetag")}
               />
-            ) : (
-              <ListItemText
-                primary={"HOME"}
-                onClick={() => navigate("/computer_price_tag")}
-              />
+            )}
+            {repoName === "/pricetag" && (
+              <ListItemText primary={"HOME"} onClick={() => navigate("/")} />
             )}
           </ListItemButton>
         </ListItem>
       </List>
-      <List></List>
     </Box>
   );
 
@@ -94,30 +93,30 @@ function Navbar(props) {
               <div
                 className="desktop-navbar"
                 style={{ cursor: "pointer" }}
-                onClick={() => navigate("/computer_price_tag")}
+                onClick={() => navigate("/")}
               >
                 <LocalOfferIcon />
                 <div>PRICE TAG MAKER</div>
               </div>
             </Typography>
+
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
-              {repoName === "/" ||
-              repoName === "/computer_price_tag/" ||
-              repoName === "/computer_price_tag" ? (
+              {repoName === "/" && (
                 <Button
                   key={"VIEW"}
                   sx={{ color: "#fff" }}
-                  onClick={() => navigate("/computer_price_tag/pricetag")}
-                  startIcon={<LocalOfferIcon />} // Icon on the left of the text
+                  onClick={() => navigate("/pricetag")}
+                  startIcon={<LocalOfferIcon />}
                 >
                   VIEW
                 </Button>
-              ) : (
+              )}
+              {repoName === "/pricetag" && (
                 <Button
                   key={"HOME"}
                   sx={{ color: "#fff" }}
-                  onClick={() => navigate("/computer_price_tag")}
-                  startIcon={<HomeIcon />} // Icon on the left of the text
+                  onClick={() => navigate("/")}
+                  startIcon={<HomeIcon />}
                 >
                   HOME
                 </Button>

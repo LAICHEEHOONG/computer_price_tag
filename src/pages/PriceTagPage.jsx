@@ -49,7 +49,12 @@ const PriceTagPage = React.forwardRef((props, ref) => {
             >
               <Rotate90DegreesCwIcon />
             </Fab>
-            <Fab onClick={() => navigate("/computer_price_tag")}>
+            <Fab
+              onClick={() => {
+                // navigate("/computer_price_tag");
+                navigate("/");
+              }}
+            >
               <AddIcon />
             </Fab>
 

@@ -31,7 +31,8 @@ export default function AlertSnackbar() {
           color="secondary"
           size="small"
           onClick={() => {
-            navigate(`/computer_price_tag/pricetag`);
+            // navigate(`/computer_price_tag/pricetag`);
+            navigate(`/pricetag`);
           }}
         >
           CHECK IT OUT
