@@ -135,17 +135,6 @@ const PriceTagSize = ({ prop }) => {
   });
 
   const overlaySquare = () => ({
-    // position: "absolute",
-    // top: 0,
-    // left: 0,
-    // width: '100%',
-    // height: '100%',
-    // backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    // transition: 'opacity 0.5s',
-    // opactiy: 0,
-    // display: 'flex',
-    // justifyContent: 'center',
-    // alignItems: 'center',
     gap: `${50 * size}px`,
   });
 

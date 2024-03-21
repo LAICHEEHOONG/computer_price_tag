@@ -1,6 +1,7 @@
 import InputField from "../components/InputField";
 import { useSelector } from "react-redux";
 import PriceTagCore from "../components/PriceTagCore";
+import PriceTagSize from "../components/PriceTagSize";
 
 const HomePage = () => {
   const state = useSelector((state) => state.input);
@@ -14,7 +15,7 @@ const HomePage = () => {
     <div className="home-page-container">
       <InputField />
       <div className="home-page-pricetag-container">
-        <PriceTagCore prop={prop} />
+        <PriceTagSize prop={prop} />
       </div>
     </div>
   );

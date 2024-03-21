@@ -6,11 +6,13 @@ import PriceTagCore from "./PriceTagCore";
 import { useDispatch, useSelector } from "react-redux";
 import { setDialog } from "../features/input/inputSlice";
 import EditField from "./EditField";
+import PriceTagSize from "./PriceTagSize";
 
 export default function EditPriceTagDialog() {
   const dispatch = useDispatch();
   const dialog = useSelector((state) => state.input.dialog);
   const priceTags = useSelector((state) => state.input.priceTags);
+  const size = useSelector((state) => state.size.size);
 
   const selectedPriceTags = (id) => {
     let result = priceTags.find((obj) => obj.id === id);
@@ -33,24 +35,21 @@ export default function EditPriceTagDialog() {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
         maxWidth="md"
-        sx={{
-          width: {
-            // xs: "90%", // For small screens
-            // sm: "70%", // For medium screens
-            // md: "1500px", // For large screens
-          },
-        }}
       >
-        <div className="dialog-container">
+        <div className="dialog-container" style={{ width: `${800 * size}px` }}>
           <div>
             <EditField state={dialog.targetPriceTag} />
           </div>
           <div>
-            <PriceTagCore prop={selectedPriceTags(dialog.targetPriceTag.id)} />
+            <PriceTagSize prop={selectedPriceTags(dialog.targetPriceTag.id)} />
+            {/* <PriceTagCore prop={selectedPriceTags(dialog.targetPriceTag.id)} /> */}
           </div>
         </div>
-        <DialogActions>
-          <Button onClick={handleClose}>CLOSE</Button>
+
+        <DialogActions style={{ width: `${800 * size}px` }}>
+          <Button style={{ alignSelf: "end" }} onClick={handleClose}>
+            CLOSE
+          </Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
-import PriceTagCore from "../components/PriceTagCore";
 import PriceTagSize from "../components/PriceTagSize";
 import PrintIcon from "@mui/icons-material/Print";
 import ReactToPrint from "react-to-print";
@@ -100,16 +99,6 @@ const PriceTagPage = React.forwardRef((props, ref) => {
                 obj = { ...obj, degree: rotate };
                 return (
                   <PriceTagSize key={`${index}-${i}-${obj.title}`} prop={obj} />
-                  // <>
-                  //   <PriceTagSize
-                  //     key={`${index}-${i}-${obj.title}`}
-                  //     prop={obj}
-                  //   />
-                  //   <PriceTagCore
-                  //     key={`${index}-${i}-${obj.title}`}
-                  //     prop={obj}
-                  //   />
-                  // </>
                 );
               })}
             </div>
