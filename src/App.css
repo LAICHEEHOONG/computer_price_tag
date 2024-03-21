@@ -184,15 +184,14 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  /* width: 400px; */
   width: 1050mm;
   /* page-break-after: always; */
 }
 
 .all-width {
   /* width: 400px; */
-  /* width: 105mm; */
-  width: 210mm;
+  width: 105mm;
+  /* width: 210mm; */
 }
 
 .price-tag-container {
@@ -268,9 +267,13 @@
 
 
 
+
 @media only screen and (max-width: 800px) {
   .dialog-container {
     flex-direction: column;
+  }
+  .price-tag-not-created {
+    width: 500px;
   }
 }
 
@@ -296,6 +299,10 @@
   }
   .home-page-pricetag-container {
     margin-left: 105px;
+  }
+  .price-tag-not-created {
+    width: 350px;
+    margin-right: -3px;
   }
 }
 

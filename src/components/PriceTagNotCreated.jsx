@@ -22,7 +22,6 @@ export default function PriceTagNotCreatedPage() {
         <Button
           size="small"
           onClick={() => {
-            // navigate("/computer_price_tag")
             navigate("/");
           }}
         >

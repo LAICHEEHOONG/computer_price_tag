@@ -36,18 +36,18 @@ export default function EditPriceTagDialog() {
         aria-describedby="alert-dialog-description"
         maxWidth="md"
       >
-        <div className="dialog-container" style={{ width: `${800 * size}px` }}>
+        <div className="dialog-container" >
           <div>
             <EditField state={dialog.targetPriceTag} />
           </div>
           <div>
-            <PriceTagSize prop={selectedPriceTags(dialog.targetPriceTag.id)} />
-            {/* <PriceTagCore prop={selectedPriceTags(dialog.targetPriceTag.id)} /> */}
+            {/* <PriceTagSize prop={selectedPriceTags(dialog.targetPriceTag.id)} /> */}
+            <PriceTagCore prop={selectedPriceTags(dialog.targetPriceTag.id)} />
           </div>
         </div>
 
-        <DialogActions style={{ width: `${800 * size}px` }}>
-          <Button style={{ alignSelf: "end" }} onClick={handleClose}>
+        <DialogActions >
+          <Button onClick={handleClose}>
             CLOSE
           </Button>
         </DialogActions>

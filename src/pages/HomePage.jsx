@@ -15,7 +15,8 @@ const HomePage = () => {
     <div className="home-page-container">
       <InputField />
       <div className="home-page-pricetag-container">
-        <PriceTagSize prop={prop} />
+        {/* <PriceTagSize prop={prop} /> */}
+        <PriceTagCore prop={prop} />
       </div>
     </div>
   );
