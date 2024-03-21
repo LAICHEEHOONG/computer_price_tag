@@ -101,7 +101,7 @@ const Specs = ({ state2, handle, _id, i }) => {
         label={"Spec"}
         variant="outlined"
         value={fieldValue}
-        onChange={(e) => handle.specsChange(_id, e.target.value)}
+        onChange={(e) => handle.specsChange(i, e.target.value)}
       />
       <div className="spec-icon-btn">
         {state2.specJsx.length - 1 === i ? (
