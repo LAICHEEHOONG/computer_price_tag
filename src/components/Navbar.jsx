@@ -26,7 +26,7 @@ function Navbar(props) {
   let repoName = location.pathname;
 
   useEffect(() => {
-    console.log("deploy redux persist");
+    console.log("deploy size");
   }, []);
 
   const { window } = props;
