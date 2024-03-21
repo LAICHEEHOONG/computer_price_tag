@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import PriceTagCore from "../components/PriceTagCore";
+import PriceTagSize from "../components/PriceTagSize";
 import PrintIcon from "@mui/icons-material/Print";
 import ReactToPrint from "react-to-print";
 import { rotatePriceTags, setPrintArr } from "../features/input/inputSlice";
@@ -11,6 +12,7 @@ import Fab from "@mui/material/Fab";
 import DeleteAll from "../components/DeleteAll";
 import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
+import SliderSizes from "../components/SliderSizes";
 
 const PriceTagPage = React.forwardRef((props, ref) => {
   let navigate = useNavigate();
@@ -19,14 +21,6 @@ const PriceTagPage = React.forwardRef((props, ref) => {
   const printArr = useSelector((state) => state.input.printArr);
   const priceTags = useSelector((state) => state.input.priceTags);
   const rotate = useSelector((state) => state.input.rotate);
-
-  // const priceTagPageTitle = () => {
-  //   if (priceTags.length === 0) {
-  //     return "Price Tag Not Created";
-  //   } else {
-  //     return `Print ${priceTags.length} Price Tags`;
-  //   }
-  // };
 
   useEffect(() => {
     dispatch(setPrintArr());
@@ -41,36 +35,47 @@ const PriceTagPage = React.forwardRef((props, ref) => {
           </div>
         ) : (
           <div className="price-tag-page-title">
-            <DeleteAll />
-            <Fab
-              onClick={() => {
-                dispatch(rotatePriceTags());
+            <div
+              style={{
+                display: "flex",
+                width: "350px",
+                justifyContent: "space-around",
+                alignItems: "center",
               }}
             >
-              <Rotate90DegreesCwIcon />
-            </Fab>
-            <Fab
-              onClick={() => {
-                // navigate("/computer_price_tag");
-                navigate("/");
-              }}
-            >
-              <AddIcon />
-            </Fab>
+              <DeleteAll />
+              <Fab
+                onClick={() => {
+                  dispatch(rotatePriceTags());
+                }}
+              >
+                <Rotate90DegreesCwIcon />
+              </Fab>
+              <Fab
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
+                <AddIcon />
+              </Fab>
 
-            <ReactToPrint
-              trigger={() => {
-                return (
-                  <Fab variant="extended">
-                    <PrintIcon sx={{ mr: 1 }} />
-                    {"print"}
-                  </Fab>
-                );
-              }}
-              content={() => {
-                return componentRef.current;
-              }}
-            />
+              <ReactToPrint
+                trigger={() => {
+                  return (
+                    <Fab variant="extended">
+                      <PrintIcon sx={{ mr: 1 }} />
+                      {"print"}
+                    </Fab>
+                  );
+                }}
+                content={() => {
+                  return componentRef.current;
+                }}
+              />
+            </div>
+            <div>
+              <SliderSizes />
+            </div>
           </div>
         )}
       </div>
@@ -94,7 +99,16 @@ const PriceTagPage = React.forwardRef((props, ref) => {
               {arr.map((obj, i) => {
                 obj = { ...obj, degree: rotate };
                 return (
-                  <PriceTagCore key={`${index}-${i}-${obj.title}`} prop={obj} />
+                  <>
+                    <PriceTagSize
+                      key={`${index}-${i}-${obj.title}`}
+                      prop={obj}
+                    />
+                    <PriceTagCore
+                      key={`${index}-${i}-${obj.title}`}
+                      prop={obj}
+                    />
+                  </>
                 );
               })}
             </div>
