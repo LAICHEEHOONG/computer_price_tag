@@ -26,7 +26,7 @@ function Navbar(props) {
   let repoName = location.pathname;
 
   useEffect(() => {
-    console.log("deploy size");
+    console.log("deploy mm");
   }, []);
 
   const { window } = props;
