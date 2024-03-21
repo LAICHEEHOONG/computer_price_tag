@@ -1,29 +1,20 @@
-// import { configureStore } from '@reduxjs/toolkit'
-// import inputReducer from '../features/input/inputSlice'
-
-// export const store = configureStore({
-//   reducer: {
-//     input: inputReducer
-//   },
-// })
-
-
-
-import { combineReducers } from 'redux';
-import { configureStore } from '@reduxjs/toolkit';
-import inputReducer from '../features/input/inputSlice';
-import { persistReducer, persistStore } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import { combineReducers } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
+import inputReducer from "../features/input/inputSlice";
+import sizeReducer from '../features/size/sizeSlice'
+import { persistReducer, persistStore } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
 const rootReducer = combineReducers({
   input: inputReducer,
+  size: sizeReducer
 });
 
 // Configure `redux-persist`
 const persistConfig = {
-  key: 'root',
+  key: "root",
   storage,
-  whitelist: ['input'],
+  whitelist: ["input", 'size'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
