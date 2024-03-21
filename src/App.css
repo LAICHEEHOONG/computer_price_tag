@@ -235,7 +235,26 @@
   gap: 50px;
 }
 
+.overlay-square_ {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.5s;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* gap: 50px; */
+}
+
 .price-tag-container:hover .overlay-square {
+  opacity: 1;
+}
+
+.price-tag-container_:hover .overlay-square_ {
   opacity: 1;
 }
 

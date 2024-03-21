@@ -75,10 +75,7 @@ const PriceTagCore = ({ prop }) => {
       <div className="price-tag-footer">
         * Untuk pertanyaan lebih lanjut, sila rujuk kepada crew kami.
       </div>
-      {repoName === "/" ||
-      repoName === "/computer_price_tag/" ||
-      repoName === "/computer_price_tag" ||
-      dialog.open ? (
+      {repoName === "/" || dialog.open ? (
         <></>
       ) : (
         <div className="overlay-square">

@@ -27,40 +27,146 @@ const PriceTagSize = ({ prop }) => {
   };
 
   const priceTagContainer = (degree) => ({
-    display: 'flex',
-    flexDirection: 'column',
+    display: "flex",
+    flexDirection: "column",
     width: `${400 * size}px`,
     transform: `rotate(${degree}deg)`,
   });
 
   const logo = () => ({
     width: `${400 * size}px`,
-  })
+  });
 
   const priceTagTitle = () => ({
-    border: '1px solid black',
+    border: "1px solid black",
     marginTop: `${-7}px`,
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: `${1.2 * size}rem`,
-    fontWeight: 'bolder',
+    fontWeight: "bolder",
     height: `${45 * size}px`,
     lineHeight: 1.7,
-    padding: `${5 * size}px`
-  })
+    padding: `${5 * size}px`,
+  });
 
   const priceTagSpec = () => ({
-    border: '1px solid black',
+    border: "1px solid black",
     fontSize: `${0.8 * size}rem`,
-    borderTop: 'none',
-    height: `${60 * size}mm`
-  })
+    borderTop: "none",
+    height: `${60 * size}mm`,
+  });
+
+  const bankPriceContainer = () => ({
+    display: "flex",
+    height: `${165 * size}px`,
+    border: "1px solid black",
+    borderTop: "none",
+  });
+
+  const priceTagBank = () => ({
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    fontWeight: "bold",
+    gap: `${5 * size}px`,
+    padding: `${8 * size}px`,
+    border: "1px solid black",
+    borderTop: "none",
+    borderLeft: "none",
+    borderBottom: "none",
+    fontSize: `${1 * size}rem`,
+  });
+
+  const bankLogoContainer = () => ({
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: `${5 * size}px`,
+  });
+
+  const bankLogo = () => ({
+    width: `${38 * size}px`,
+  });
+
+  const ambankLogo = () => ({
+    borderRadius: `${15 * size}%`,
+    ...bankLogo(),
+  });
+
+  const priceTagPrice = () => ({
+    display: "flex",
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "space-evenly",
+    alignItems: "end",
+    fontSize: `${0.9 * size}rem`,
+    paddingRight: `${20 * size}px`,
+  });
+
+  const priceTagRm = () => ({
+    display: "flex",
+    flexDirection: "row",
+    gap: `${20 * size}px`,
+  });
+
+  const rm = () => ({
+    fontSize: `${1 * size}rem`,
+    fontWeight: "bold",
+    marginTop: `${13 * size}px`,
+  });
+
+  const bulanPrice = () => ({
+    fontWeight: "bolder",
+    fontSize: `${3 * size}rem`,
+  });
+
+  const harga = () => ({
+    marginTop: `${20 * size}px`,
+  });
+
+  const priceTagFooter = () => ({
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    border: "1px solid black",
+    borderTop: "none",
+    fontSize: `${0.7 * size}rem`,
+    padding: `${5 * size}px`,
+  });
+
+  const overlaySquare = () => ({
+    // position: "absolute",
+    // top: 0,
+    // left: 0,
+    // width: '100%',
+    // height: '100%',
+    // backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    // transition: 'opacity 0.5s',
+    // opactiy: 0,
+    // display: 'flex',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    gap: `${50 * size}px`,
+  });
+
+  const fab = () => ({
+    width: `${56 * size}px`,
+    height: `${56 * size}px`,
+  });
+
+  const fabIcon = () => ({
+    width: `${24 * size}px`,
+    height: `${24 * size}px`,
+  });
 
   return (
     <div className="price-tag-container_" style={priceTagContainer(degree)}>
       <div>
         <img className="all-width_" style={logo()} src={Logo} alt="Logo" />
       </div>
-      <div className="price-tag-title_" style={priceTagTitle()} >{productTitle()}</div>
+      <div className="price-tag-title_" style={priceTagTitle()}>
+        {productTitle()}
+      </div>
       <div className="price-tag-spec_" style={priceTagSpec()}>
         <ul>
           {specJsx.map((obj, i) => {
@@ -73,58 +179,79 @@ const PriceTagSize = ({ prop }) => {
         </ul>
       </div>
 
-      <div className="bank-price-container">
-        <div className="price-tag-bank">
+      <div className="bank-price-container_" style={bankPriceContainer()}>
+        <div className="price-tag-bank_" style={priceTagBank()}>
           <div>ANSURAN</div>
           <div>BULANAN</div>
           <div>SERENDAH</div>
-          <div className="bank-logo-container">
-            <img className="bank-logo" src={Maybank} alt="maybank logo" />
-            <img className="bank-logo" src={Pb} alt="public bank logo" />
-            <img className="bank-logo" src={Cimb} alt="cimb bank logo" />
+          <div className="bank-logo-container_" style={bankLogoContainer()}>
             <img
-              className="bank-logo ambank-logo"
+              className="bank-logo_"
+              style={bankLogo()}
+              src={Maybank}
+              alt="maybank logo"
+            />
+            <img
+              className="bank-logo_"
+              style={bankLogo()}
+              src={Pb}
+              alt="public bank logo"
+            />
+            <img
+              className="bank-logo_"
+              style={bankLogo()}
+              src={Cimb}
+              alt="cimb bank logo"
+            />
+            <img
+              className="bank-logo_ ambank-logo_"
+              style={ambankLogo()}
               src={Ambank}
               alt="ambank logo"
             />
           </div>
         </div>
-        <div className="price-tag-price">
-          <div className="price-tag-rm">
-            <div className="rm">RM</div>
-            <div className="bulan-price">{`${Math.round(price / 12)}`}</div>
+        <div className="price-tag-price_" style={priceTagPrice()}>
+          <div className="price-tag-rm_" style={priceTagRm()}>
+            <div className="rm_" style={rm()}>
+              RM
+            </div>
+            <div className="bulan-price_" style={bulanPrice()}>{`${Math.round(
+              price / 12
+            )}`}</div>
           </div>
-          <div className="bulan">x 12 bulan</div>
-          <div className="harga">Harga</div>
+          <div className="bulan_">x 12 bulan</div>
+          <div className="harga_" style={harga()}>
+            Harga
+          </div>
           <div className="selling-price">{`RM ${formatNumber(price)}`}</div>
         </div>
       </div>
-      <div className="price-tag-footer">
+      <div className="price-tag-footer_" style={priceTagFooter()}>
         * Untuk pertanyaan lebih lanjut, sila rujuk kepada crew kami.
       </div>
-      {repoName === "/" ||
-      repoName === "/computer_price_tag/" ||
-      repoName === "/computer_price_tag" ||
-      dialog.open ? (
+      {repoName === "/" || dialog.open ? (
         <></>
       ) : (
-        <div className="overlay-square">
+        <div className="overlay-square_" style={overlaySquare()}>
           <Fab
             color="primary"
+            style={fab()}
             onClick={() => {
               dispatch(setDialog({ open: true, id: id }));
             }}
           >
-            <EditIcon />
+            <EditIcon style={fabIcon()} />
           </Fab>
 
           <Fab
             color="secondary"
+            style={fab()}
             onClick={() => {
               dispatch(deleteOne(id));
             }}
           >
-            <DeleteIcon />
+            <DeleteIcon style={fabIcon()} />
           </Fab>
         </div>
       )}
