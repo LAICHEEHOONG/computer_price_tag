@@ -10,7 +10,8 @@ export default function SliderSizes() {
   return (
     <Box sx={{ width: 400, marginTop: "30px" }}>
       <Slider
-        defaultValue={size * 50}
+        // defaultValue={size * 50}
+        value={size * 50}
         aria-label="Default"
         valueLabelDisplay="auto"
         onChange={(e) => {

@@ -168,7 +168,7 @@ const PriceTagSize = ({ prop }) => {
         {productTitle()}
       </div>
       <div className="price-tag-spec_" style={priceTagSpec()}>
-        <ul>
+        <ul style={{ paddingLeft: `${40 * size}px` }}>
           {specJsx.map((obj, i) => {
             if (obj.value) {
               return <li key={i}>{obj.value}</li>;

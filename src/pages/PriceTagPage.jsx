@@ -99,16 +99,17 @@ const PriceTagPage = React.forwardRef((props, ref) => {
               {arr.map((obj, i) => {
                 obj = { ...obj, degree: rotate };
                 return (
-                  <>
-                    <PriceTagSize
-                      key={`${index}-${i}-${obj.title}`}
-                      prop={obj}
-                    />
-                    <PriceTagCore
-                      key={`${index}-${i}-${obj.title}`}
-                      prop={obj}
-                    />
-                  </>
+                  <PriceTagSize key={`${index}-${i}-${obj.title}`} prop={obj} />
+                  // <>
+                  //   <PriceTagSize
+                  //     key={`${index}-${i}-${obj.title}`}
+                  //     prop={obj}
+                  //   />
+                  //   <PriceTagCore
+                  //     key={`${index}-${i}-${obj.title}`}
+                  //     prop={obj}
+                  //   />
+                  // </>
                 );
               })}
             </div>
