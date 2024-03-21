@@ -26,12 +26,18 @@ const PriceTagSize = ({ prop }) => {
     }
   };
 
-  const priceTagContainer = (degree) => ({
-    display: "flex",
-    flexDirection: "column",
-    width: `${400 * size}px`,
-    transform: `rotate(${degree}deg)`,
-  });
+  const priceTagContainer = (degree) => {
+    let s =  {
+      display: "flex",
+      flexDirection: "column",
+      width: `${400 * size}px`,
+      transform: `rotate(${degree}deg)`,
+    }
+    if(degree === 90 || degree === 270) {
+      s = {...s, margin: `${70 * size}px`}
+    }
+    return s;
+  };
 
   const logo = () => ({
     width: `${400 * size}px`,
@@ -149,7 +155,10 @@ const PriceTagSize = ({ prop }) => {
   });
 
   return (
-    <div className="price-tag-container_" style={priceTagContainer(degree)}>
+    <div
+      className="price-tag-container_ print-wrapper"
+      style={priceTagContainer(degree)}
+    >
       <div>
         <img className="all-width_" style={logo()} src={Logo} alt="Logo" />
       </div>

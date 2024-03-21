@@ -266,6 +266,8 @@
   padding: 20px;
 }
 
+
+
 @media only screen and (max-width: 800px) {
   .dialog-container {
     flex-direction: column;
@@ -306,5 +308,10 @@
   }
   .price-tag-print-title {
     display: none;
+  }
+  .print-wrapper {
+    /* margin-top: 20px; */
+    padding-top: 20px;
+    page-break-inside: avoid;
   }
 }

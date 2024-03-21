@@ -79,7 +79,44 @@ const PriceTagPage = React.forwardRef((props, ref) => {
         )}
       </div>
 
-      <div>
+      <div
+        ref={componentRef}
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          width: '800px',
+          // padding: '30px',
+          // display: "flex",
+          // flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {
+          priceTags.map((obj, i) => {
+            obj = { ...obj, degree: rotate };
+            return (
+              <PriceTagSize key={`${i}-${obj.title}`} prop={obj} />
+            )
+          })
+        }
+        {/* {printArr.map((arr, index) => (
+          <div
+            className="price-tag-print-container all-width"
+            style={{ marginTop: "42.67px" }}
+            key={index}
+          >
+            {arr.map((obj, i) => {
+              obj = { ...obj, degree: rotate };
+              return (
+                <PriceTagSize key={`${index}-${i}-${obj.title}`} prop={obj} />
+              );
+            })}
+          </div>
+        ))} */}
+      </div>
+
+      {/* <div>
         <div
           ref={componentRef}
           style={{
@@ -104,7 +141,7 @@ const PriceTagPage = React.forwardRef((props, ref) => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 });
