@@ -140,7 +140,7 @@
 
 .bulan-price {
   font-weight: bolder;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .bulan,
@@ -264,9 +264,6 @@
   align-items: center;
   padding: 20px;
 }
-
-
-
 
 @media only screen and (max-width: 800px) {
   .dialog-container {
