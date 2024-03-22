@@ -6,22 +6,22 @@ import PriceTagCore from "./PriceTagCore";
 import { useDispatch, useSelector } from "react-redux";
 import { setDialog } from "../features/input/inputSlice";
 import EditField from "./EditField";
-import PriceTagSize from "./PriceTagSize";
+// import PriceTagSize from "./PriceTagSize";
 
 export default function EditPriceTagDialog() {
   const dispatch = useDispatch();
   const dialog = useSelector((state) => state.input.dialog);
   const priceTags = useSelector((state) => state.input.priceTags);
-  const size = useSelector((state) => state.size.size);
+  // const size = useSelector((state) => state.size.size);
 
   const selectedPriceTags = (id) => {
     let result = priceTags.find((obj) => obj.id === id);
     return result;
   };
 
-  const handleClickOpen = () => {
-    dispatch(setDialog({ open: true }));
-  };
+  // const handleClickOpen = () => {
+  //   dispatch(setDialog({ open: true }));
+  // };
 
   const handleClose = () => {
     dispatch(setDialog({ open: false }));

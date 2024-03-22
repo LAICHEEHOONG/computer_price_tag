@@ -204,7 +204,7 @@ const PriceTagSize = ({ prop }) => {
               alt="cimb bank logo"
             />
             <img
-              className="bank-logo_ ambank-logo_"
+              className="bank-logo_"
               style={ambankLogo()}
               src={Ambank}
               alt="ambank logo"

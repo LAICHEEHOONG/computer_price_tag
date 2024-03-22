@@ -17,7 +17,7 @@ const PriceTagPage = React.forwardRef((props, ref) => {
   let navigate = useNavigate();
   const componentRef = useRef();
   const dispatch = useDispatch();
-  const printArr = useSelector((state) => state.input.printArr);
+  // const printArr = useSelector((state) => state.input.printArr);
   const priceTags = useSelector((state) => state.input.priceTags);
   const rotate = useSelector((state) => state.input.rotate);
 

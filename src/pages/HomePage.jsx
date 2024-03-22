@@ -1,7 +1,7 @@
 import InputField from "../components/InputField";
 import { useSelector } from "react-redux";
 import PriceTagCore from "../components/PriceTagCore";
-import PriceTagSize from "../components/PriceTagSize";
+// import PriceTagSize from "../components/PriceTagSize";
 
 const HomePage = () => {
   const state = useSelector((state) => state.input);

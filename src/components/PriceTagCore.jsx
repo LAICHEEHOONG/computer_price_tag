@@ -62,7 +62,7 @@ const PriceTagCore = ({ prop }) => {
               src={Ambank}
               alt="ambank logo"
             />
-            <img className="bank-logo" src={Aeon} alt="aeon" />
+            <img className="bank-logo ambank-logo" src={Aeon} alt="aeon" />
           </div>
         </div>
         <div className="price-tag-price">
