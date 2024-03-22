@@ -5,8 +5,11 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import AlertSnackbar from "./components/AlertSnackbar";
 import EditPriceTagDialog from "./components/Dialog";
+import { useSelector } from "react-redux";
+
 
 function App() {
+  // const login = useSelector(state => state.login.login)
   return (
     <div className="app-container">
       <Navbar />
@@ -16,7 +19,6 @@ function App() {
       <div>
         <EditPriceTagDialog />
       </div>
-
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/computer_price_tag" element={<HomePage />} />
