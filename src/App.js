@@ -6,26 +6,17 @@ import Navbar from "./components/Navbar";
 import AlertSnackbar from "./components/AlertSnackbar";
 import EditPriceTagDialog from "./components/Dialog";
 import LoginPage from "./pages/LoginPage";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
-import {test} from './features/login/loginSlice'
+import { useSelector } from "react-redux";
 
 function App() {
   const login = useSelector((state) => state.login);
-  const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(test(false))
-  // }, [])
 
   return (
     <>
       {login.login ? (
         <div className="app-container">
           <Navbar />
-          {/* <div className="alert-container">
-        <AlertSnackbar />
-      </div> */}
+
           <div>
             <EditPriceTagDialog />
           </div>
@@ -51,5 +42,3 @@ function App() {
 }
 
 export default App;
-
-//App.js

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -24,10 +24,6 @@ function Navbar(props) {
   const navigate = useNavigate();
   const location = useLocation();
   let repoName = location.pathname;
-
-  useEffect(() => {
-    console.log("deploy mm");
-  }, []);
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);

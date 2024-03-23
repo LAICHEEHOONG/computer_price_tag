@@ -17,7 +17,6 @@ const PriceTagPage = React.forwardRef((props, ref) => {
   let navigate = useNavigate();
   const componentRef = useRef();
   const dispatch = useDispatch();
-  // const printArr = useSelector((state) => state.input.printArr);
   const priceTags = useSelector((state) => state.input.priceTags);
   const rotate = useSelector((state) => state.input.rotate);
 
@@ -85,9 +84,6 @@ const PriceTagPage = React.forwardRef((props, ref) => {
           display: 'flex',
           flexWrap: 'wrap',
           width: '800px',
-          // padding: '30px',
-          // display: "flex",
-          // flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
         }}
@@ -100,48 +96,10 @@ const PriceTagPage = React.forwardRef((props, ref) => {
             )
           })
         }
-        {/* {printArr.map((arr, index) => (
-          <div
-            className="price-tag-print-container all-width"
-            style={{ marginTop: "42.67px" }}
-            key={index}
-          >
-            {arr.map((obj, i) => {
-              obj = { ...obj, degree: rotate };
-              return (
-                <PriceTagSize key={`${index}-${i}-${obj.title}`} prop={obj} />
-              );
-            })}
-          </div>
-        ))} */}
+
       </div>
 
-      {/* <div>
-        <div
-          ref={componentRef}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          {printArr.map((arr, index) => (
-            <div
-              className="price-tag-print-container all-width"
-              style={{ marginTop: "42.67px" }}
-              key={index}
-            >
-              {arr.map((obj, i) => {
-                obj = { ...obj, degree: rotate };
-                return (
-                  <PriceTagSize key={`${index}-${i}-${obj.title}`} prop={obj} />
-                );
-              })}
-            </div>
-          ))}
-        </div>
-      </div> */}
+
     </div>
   );
 });

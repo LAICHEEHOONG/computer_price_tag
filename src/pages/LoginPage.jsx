@@ -15,8 +15,6 @@ import {
 } from "../features/login/loginSlice";
 import BackdropProgress from "../components/BackdropProgress";
 import LockMessage from "../components/LockMessage";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useTheme } from "@mui/material/styles";
 
 export default function LoginPage() {
   const state = useSelector((state) => state.login);
@@ -56,23 +54,13 @@ export default function LoginPage() {
 const Content = ({ state, handle }) => {
   return (
     <>
-      {/* <Typography variant="h2" sx={{ my: 2 }}>
-        <div
-          className="navbar-header"
-          style={state.limit >= 100 ? { color: "#d32f2f" } : {}}
-        >
-          <LocalOfferIcon sx={{ fontSize: 50 }} />
-          <div>PRICE TAG MAKER</div>
-        </div>
-      </Typography> */}
       <Typography
         variant="h2"
         sx={{
           my: 2,
-          fontSize: { xs: 45, md: 50 }, // Adjust font sizes as needed
+          fontSize: { xs: 45, md: 50 },
           "@media (max-width: 600px)": {
-            // Target for smaller screens (adjust breakpoint)
-            fontSize: 30, // Smaller font size for narrow screens
+            fontSize: 30,
           },
         }}
       >
@@ -80,13 +68,11 @@ const Content = ({ state, handle }) => {
           className="navbar-header"
           style={state.limit >= 100 ? { color: "#d32f2f" } : {}}
         >
-          {/* <LocalOfferIcon sx={{ fontSize: 30 }} /> */}
           <LocalOfferIcon
             sx={{
-              fontSize: { xs: 45, md: 50 }, // Adjust font sizes as needed
+              fontSize: { xs: 45, md: 50 },
               "@media (max-width: 600px)": {
-                // Target for smaller screens (adjust breakpoint)
-                fontSize: 30, // Smaller size for narrow screens
+                fontSize: 30,
               },
             }}
           />
@@ -112,7 +98,6 @@ const PasswordField = ({ state, handle }) => {
             <IconButton
               aria-label="toggle password visibility"
               onClick={() => setShow((boolean) => (boolean ? false : true))}
-              // onMouseDown={handleMouseDownPassword}
               edge="end"
             >
               {show ? <VisibilityOff /> : <Visibility />}
