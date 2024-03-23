@@ -19,6 +19,7 @@ const PriceTagSize = ({ prop }) => {
   const location = useLocation();
   let repoName = location.pathname;
   const { title, specJsx, price, degree, id } = prop;
+
   const productTitle = () => {
     if (title.length > 31) {
       return title.substring(0, 31) + "...";
@@ -129,7 +130,7 @@ const PriceTagSize = ({ prop }) => {
 
   const harga = () => ({
     marginTop: `${20 * size}px`,
-    fontWeight: 'bold'
+    fontWeight: "bold",
   });
 
   const priceTagFooter = () => ({

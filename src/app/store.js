@@ -9,14 +9,14 @@ import storage from "redux-persist/lib/storage";
 const rootReducer = combineReducers({
   input: inputReducer,
   size: sizeReducer,
-  login: loginReducer
+  login: loginReducer,
 });
 
 // Configure `redux-persist`
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["input", "size", 'login'],
+  whitelist: ["input", "size", "login"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

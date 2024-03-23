@@ -1,55 +1,68 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { sha256 } from "../../utils/tool";
 
 const initialState = {
   webPassword: "",
   clientPassword: "",
   login: false,
   limit: 0,
+  loading: true,
 };
 
 export const loginSlice = createSlice({
   name: "login",
   initialState,
   reducers: {
-    generateWebPassword: async (state) => {
-      // when the new hash password not match the old hash password Store the hash to redux , then the limit reset to 0,
-      // If new hash match the old hash, then nothing to do
-      const today = new Date().getDate();
-      const todayPassword = `PCD888${today}`;
-      try {
-        const newWebPassword = await sha256(todayPassword);
-        if (newWebPassword !== state.webPassword) {
-          state.webPassword = newWebPassword;
-          state.limit = 0;
-        }
-      } catch (err) {
-        console.log(err);
+    setWebPassword: (state, action) => {
+      const newWebPassword = action.payload;
+      if (newWebPassword !== state.webPassword) {
+        state.login = false;
+        state.limit = 0;
+        state.webPassword = newWebPassword;
       }
-    },
-    clientInputPassword: async (state, action) => {
-      // If client password not match website password redux login = false, limit + 1
-      try {
-        let loginAttempt = await sha256(action.payload); // Password attempt during login
-        state.clientPassword = loginAttempt;
-        if (loginAttempt === state.webPassword) {
-          state.login = true;
-        } else {
-          state.login = false;
-          state.limit = state.limit + 1;
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    },
-    // lockWebsite: (state) => {
-    //   // If limit = 10 show lock in info hidden the input field, info show message failed 10 time, pls try tomorrow
-    //   // If client password match web password login = true, then go to home page
 
-    // },
+      state.loading = false;
+    },
+    setClientPassword: (state, action) => {
+      state.clientPassword = action.payload;
+      if (state.clientPassword !== state.webPassword) {
+        state.limit = state.limit + 1;
+      } else {
+        state.login = true;
+        state.limit = 0;
+      }
+    },
+    setLoading: (state, action) => {
+      state.loading = action.payload;
+    },
   },
 });
 
-export const { generateWebPassword, clientInputPassword } = loginSlice.actions;
+export const { setWebPassword, setClientPassword, setLoading } =
+  loginSlice.actions;
+
+export const generateWebPassword = () => async (dispatch) => {
+  dispatch(setLoading(true));
+  const today = new Date().getDate();
+  const todayPassword = `PCD888${today}`;
+  const encoder = new TextEncoder();
+  const data = encoder.encode(todayPassword);
+  const buffer = await crypto.subtle.digest("SHA-256", data);
+  const hashArray = Array.from(new Uint8Array(buffer));
+  const hashHex = hashArray
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+  dispatch(setWebPassword(hashHex));
+};
+
+export const generateClientPassword = (password) => async (dispatch) => {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(password);
+  const buffer = await crypto.subtle.digest("SHA-256", data);
+  const hashArray = Array.from(new Uint8Array(buffer));
+  const hashHex = hashArray
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+  dispatch(setClientPassword(hashHex));
+};
 
 export default loginSlice.reducer;
