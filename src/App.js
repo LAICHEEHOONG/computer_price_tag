@@ -6,10 +6,29 @@ import Navbar from "./components/Navbar";
 import AlertSnackbar from "./components/AlertSnackbar";
 import EditPriceTagDialog from "./components/Dialog";
 import LoginPage from "./pages/LoginPage";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import {
+  generateWebPassword,
+  generateClientPassword,
+} from "./features/login/loginSlice";
 
 function App() {
   const login = useSelector((state) => state.login);
+  const dispatch = useDispatch();
+
+  const handle = {
+    generateWebPassword: () => {
+      dispatch(generateWebPassword());
+    },
+    generateClientPassword: (password) => {
+      dispatch(generateClientPassword(password));
+    },
+  };
+
+  useEffect(() => {
+    handle.generateWebPassword();
+  }, []);
 
   return (
     <>

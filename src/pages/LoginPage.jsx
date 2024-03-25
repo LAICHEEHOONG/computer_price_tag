@@ -21,17 +21,17 @@ export default function LoginPage() {
   const dispatch = useDispatch();
 
   const handle = {
-    generateWebPassword: () => {
-      dispatch(generateWebPassword());
-    },
+    // generateWebPassword: () => {
+    //   dispatch(generateWebPassword());
+    // },
     generateClientPassword: (password) => {
       dispatch(generateClientPassword(password));
     },
   };
 
-  useEffect(() => {
-    handle.generateWebPassword();
-  }, []);
+  // useEffect(() => {
+  //   handle.generateWebPassword();
+  // }, []);
 
   const props = { state, handle };
 
@@ -51,7 +51,7 @@ export default function LoginPage() {
 
 /********* Component ******************************************************************************************************************************/
 
-const Content = ({ state, handle }) => {
+const Content = ({ state }) => {
   return (
     <>
       <Typography
@@ -85,7 +85,6 @@ const Content = ({ state, handle }) => {
 
 const PasswordField = ({ state, handle }) => {
   const [show, setShow] = useState(false);
-  const dispatch = useDispatch();
 
   return (
     <FormControl sx={{ m: 1 }} fullWidth variant="outlined">
@@ -106,7 +105,8 @@ const PasswordField = ({ state, handle }) => {
         }
         label="Password"
         onChange={(event) => {
-          dispatch(generateClientPassword(event.target.value));
+          // dispatch(generateClientPassword(event.target.value));
+          handle.generateClientPassword(event.target.value);
         }}
       />
     </FormControl>
