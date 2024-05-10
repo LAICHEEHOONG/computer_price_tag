@@ -34,3 +34,35 @@ export async function sha256(input) {
   console.log(hashHex)
   return hashHex;
 }
+
+
+export function dateFormat() {
+  // Create a new Date object
+  const date = new Date();
+
+  // Define an array of month names
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  // Get the day, month, and year
+  const day = date.getDate();
+  const monthIndex = date.getMonth();
+  const year = date.getFullYear();
+
+  // Format the date
+  const formattedDate = day + " " + monthNames[monthIndex] + " " + year;
+
+  return formattedDate;
+}

@@ -11,6 +11,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteOne, setDialog } from "../features/input/inputSlice";
+import { dateFormat } from "../utils/tool";
 
 const PriceTagSize = ({ prop }) => {
   const size = useSelector((state) => state.size.size);
@@ -219,6 +220,16 @@ const PriceTagSize = ({ prop }) => {
           </div>
         </div>
         <div className="price-tag-price_" style={priceTagPrice()}>
+          <div
+            style={{
+              position: "absolute",
+              marginTop: `${-190 * size}px`,
+              fontWeight: "bold",
+              fontSize: `${0.6 * size}rem`,
+            }}
+          >
+            {dateFormat()}
+          </div>
           <div className="price-tag-rm_" style={priceTagRm()}>
             <div className="rm_" style={rm()}>
               RM

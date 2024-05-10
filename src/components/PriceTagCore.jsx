@@ -11,6 +11,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteOne, setDialog } from "../features/input/inputSlice";
+import { dateFormat } from "../utils/tool";
 
 const PriceTagCore = ({ prop }) => {
   const dialog = useSelector((state) => state.input.dialog);
@@ -66,6 +67,16 @@ const PriceTagCore = ({ prop }) => {
           </div>
         </div>
         <div className="price-tag-price">
+          <div
+            style={{
+              position: "absolute",
+              marginTop: "-190px",
+              fontWeight: "bold",
+              fontSize: "0.6rem",
+            }}
+          >
+            {dateFormat()}
+          </div>
           <div className="price-tag-rm">
             <div className="rm">RM</div>
             <div className="bulan-price">{`${Math.round(price / 12)}`}</div>
@@ -106,3 +117,34 @@ const PriceTagCore = ({ prop }) => {
 };
 
 export default PriceTagCore;
+
+// function dateFormat() {
+//   // Create a new Date object
+//   const date = new Date();
+
+//   // Define an array of month names
+//   const monthNames = [
+//     "January",
+//     "February",
+//     "March",
+//     "April",
+//     "May",
+//     "June",
+//     "July",
+//     "August",
+//     "September",
+//     "October",
+//     "November",
+//     "December",
+//   ];
+
+//   // Get the day, month, and year
+//   const day = date.getDate();
+//   const monthIndex = date.getMonth();
+//   const year = date.getFullYear();
+
+//   // Format the date
+//   const formattedDate = day + " " + monthNames[monthIndex] + " " + year;
+
+//   return formattedDate;
+// }
